@@ -10,19 +10,34 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let squaresQtd = 10
-    let ambientSize = 6
+    let squaresQtd = 2 // Quantidade de quadrados no problema
+    let ambientSize = 6 // Tamanho do ambiente trabalhado
     
-    var ambient = [[Int]]()
-    var positionsX = [Int]()
-    var positionsY = [Int]()
+    var ambient = [[Int]]() // Criação de uma matrix NxN que será o ambiente
+    var positions = [[Int]]() // Posições iniciais X de cada quadrado
+    //var positionsY = [Int]() // Posições iniciais Y de cada quadrado
+    //Cada quadrado ocupa 4 pontos na matrix ambiente, sendo o positionsX e positionsY informando o ponto esquerdo-superior de cada quadrado
     
-    var vertexPositions = [[Int]]()
-    var sucessors = [[[Int]]]()
+    var vertexPositions = [[Int]]() // A posição de todas as vértices de todos os quadrados
+    
+    var sucessors = [[[Int]]]() // A lista de sucessor, ordenado juntamente com os vertices
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         createAmbient()
+        for i in 0..<ambientSize{
+            print(ambient[i])
+        }
+        for pos in positions{
+            print(pos)
+        }
+        positions.sort{ $0.first! < $1.first! }
+        for pos in positions{
+            print(pos)
+            vertex(point: [pos[1],pos[0]])
+        }
         for i in 0..<ambientSize{
             print(ambient[i])
         }
@@ -38,8 +53,12 @@ class ViewController: UIViewController {
             }
             sucessors.append(vector)
         }
-//        createSucessors(firstVertex: vertexPositions[0], secondVertex: vertexPositions[7])
+//        let pointA = [1,2]
+//        let pointB = [3,5]
+//        generateEquation(firstPoint: pointB, secondPoint: pointA)
+        
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -47,7 +66,7 @@ class ViewController: UIViewController {
     }
     
     
-    // Preparando os quadrados no vetor
+    // Preparando os quadrados na matriz
     func createAmbient(){
         var array = [Int]()
         for _ in 0..<ambientSize{
@@ -60,14 +79,13 @@ class ViewController: UIViewController {
             let x = Int(2+arc4random()%UInt32(ambientSize-5))
             let y = Int(1+arc4random()%UInt32(ambientSize-3))
             
-            positionsX.append(x)
-            positionsY.append(y)
+            positions.append([x,y])
+//            positionsX.append(x)
+//            positionsY.append(y)
             self.ambient[y][x] = 1
             self.ambient[y+1][x] = 1
             self.ambient[y][x+1] = 1
             self.ambient[y+1][x+1] = 1
-            vertex(point: [y,x])
-            //print("\(x) - \(y)")
         }
     }
     
@@ -91,6 +109,7 @@ class ViewController: UIViewController {
         }
     }
     
+    // Criando os sucessores de cada vértice
     func createSucessors(firstVertex: [Int], secondVertex: [Int]) -> Bool{
         let equation = generateEquation(firstPoint: firstVertex, secondPoint: secondVertex)
         var cut = false
@@ -128,7 +147,8 @@ class ViewController: UIViewController {
         }
         return cut
     }
-    // Criando função da reta [1] = Y ; [0] = X
+    
+    // Criando função da reta [0] = X ; [1] = Y
     func generateEquation(firstPoint: [Int], secondPoint: [Int]) -> [Int]{
         let a = -(secondPoint[1]-firstPoint[1])
         let b = secondPoint[0]-firstPoint[0]
