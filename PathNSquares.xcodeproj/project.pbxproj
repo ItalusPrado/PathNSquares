@@ -14,6 +14,8 @@
 		B9EE07BA1F5859810024E2E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9EE07B81F5859810024E2E2 /* LaunchScreen.storyboard */; };
 		B9EE07C51F5859810024E2E2 /* PathNSquaresTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EE07C41F5859810024E2E2 /* PathNSquaresTests.swift */; };
 		B9EE07D01F5859810024E2E2 /* PathNSquaresUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EE07CF1F5859810024E2E2 /* PathNSquaresUITests.swift */; };
+		B9EE07DE1F5E0C880024E2E2 /* Ambient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EE07DD1F5E0C880024E2E2 /* Ambient.swift */; };
+		B9EE07E11F5E106C0024E2E2 /* Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EE07E01F5E106C0024E2E2 /* Vertex.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		B9EE07CB1F5859810024E2E2 /* PathNSquaresUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PathNSquaresUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9EE07CF1F5859810024E2E2 /* PathNSquaresUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathNSquaresUITests.swift; sourceTree = "<group>"; };
 		B9EE07D11F5859810024E2E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B9EE07DD1F5E0C880024E2E2 /* Ambient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ambient.swift; sourceTree = "<group>"; };
+		B9EE07E01F5E106C0024E2E2 /* Vertex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vertex.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,7 @@
 		B9EE07AE1F5859810024E2E2 /* PathNSquares */ = {
 			isa = PBXGroup;
 			children = (
+				B9EE07DF1F5E0CA70024E2E2 /* Objects */,
 				B9EE07AF1F5859810024E2E2 /* AppDelegate.swift */,
 				B9EE07B11F5859810024E2E2 /* ViewController.swift */,
 				B9EE07B31F5859810024E2E2 /* Main.storyboard */,
@@ -123,6 +128,15 @@
 				B9EE07D11F5859810024E2E2 /* Info.plist */,
 			);
 			path = PathNSquaresUITests;
+			sourceTree = "<group>";
+		};
+		B9EE07DF1F5E0CA70024E2E2 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				B9EE07DD1F5E0C880024E2E2 /* Ambient.swift */,
+				B9EE07E01F5E106C0024E2E2 /* Vertex.swift */,
+			);
+			name = Objects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,6 +276,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9EE07DE1F5E0C880024E2E2 /* Ambient.swift in Sources */,
+				B9EE07E11F5E106C0024E2E2 /* Vertex.swift in Sources */,
 				B9EE07B21F5859810024E2E2 /* ViewController.swift in Sources */,
 				B9EE07B01F5859810024E2E2 /* AppDelegate.swift in Sources */,
 			);
