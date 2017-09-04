@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let squaresQtd = 1 // Quantidade de quadrados no problema
+    let squaresQtd = 2 // Quantidade de quadrados no problema
     let ambientSize = 6 // Tamanho do ambiente trabalhado
     
     var ambient = [[Int]]() // Criação de uma matrix NxN que será o ambiente
@@ -28,11 +28,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         createAmbient()
         positions.sort{ $0.first! < $1.first! }
-        
 
         for pos in positions{
             vertex(point: [pos[1],pos[0]])
         }
+        vertexPositions.sort{$0.first! < $1.first!}
         for i in 0..<ambientSize{
             print(ambient[i])
         }
@@ -48,9 +48,9 @@ class ViewController: UIViewController {
             }
             sucessors.append(vector)
         }
-//        let pointA = [1,2]
-//        let pointB = [3,5]
-//        generateEquation(firstPoint: pointB, secondPoint: pointA)
+        let pointA = [1,2]
+        let pointB = [3,5]
+        generateEquation(firstPoint: pointA, secondPoint: pointB)
         
     }
     
@@ -106,68 +106,45 @@ class ViewController: UIViewController {
     
     // Criando os sucessores de cada vértice
     func createSucessors(firstVertex: [Int], secondVertex: [Int]) -> Bool{
-        print("\(firstVertex) e \(secondVertex)")
         var sucessor = false
         
         // Verificando se é uma linha que não é diagonal (a equação da reta não funciona direito nesses casos
         if firstVertex[0] == secondVertex[0] || firstVertex[1] == secondVertex[1]{
             sucessor = lineHorVer(firstPoint: firstVertex, secondPoint: secondVertex)
+            //print("\(firstVertex) - \(secondVertex) = \(sucessor) - Igual")
+        } else {
+            sucessor = lineDiag(firstPoint: firstVertex, secondPoint: secondVertex)
+            //print("\(firstVertex) - \(secondVertex) = \(sucessor) = Diagonal")
         }
-        
-//        let equation = generateEquation(firstPoint: firstVertex, secondPoint: secondVertex)
-//        var sucessor = false
-        
-//        if firstVertex[0] < secondVertex[0]{
-//            for i in firstVertex[0]...secondVertex[0]{
-//                if (-(equation[0]*i)+equation[2])/equation[1] >= 0 && (-(equation[0]*i)+equation[2])/equation[1] < ambientSize{
-//                    if ambient[(-(equation[0]*i)+equation[2])/equation[1]][i] == 1{
-//                        sucessor = true
-//                    }
-//                }
-//            }
-//        } else if secondVertex[0] == secondVertex[0]{
-//            if firstVertex[1] < secondVertex[1]{
-//                for i in firstVertex[1]...secondVertex[1]{
-//                    if ambient[firstVertex[0]][i] == 1{
-//                        sucessor = true
-//                    }
-//                }
-//            } else {
-//                for i in secondVertex[1]...firstVertex[1]{
-//                    if ambient[firstVertex[0]][i] == 1{
-//                        sucessor = true
-//                    }
-//                }
-//            }
-//            
-//        } else {
-//            for i in secondVertex[0]...firstVertex[0]{
-//                if (-(equation[0]*i)+equation[2])/equation[1] >= 0 && (-(equation[0]*i)+equation[2])/equation[1] < ambientSize{
-//                    if ambient[(-(equation[0]*i)+equation[2])/equation[1]][i] == 1{
-//                        sucessor = true
-//                    }
-//                }
-//            }
-//        }
-        print(sucessor)
+        print("\(firstVertex) - \(secondVertex) = \(sucessor)")
         return sucessor
     }
     
-    func lineHorVer(firstPoint: [Int], secondPoint: [Int]) -> Bool{
+    func lineDiag(firstPoint: [Int], secondPoint: [Int]) -> Bool{
         
-        var sucessor = true
+        let equation = generateEquation(firstPoint: firstPoint, secondPoint: secondPoint)
+        for i in firstPoint[0]...secondPoint[0]{
+            let y = Int(round((-(Float(equation[0])*Float(i)+Float(equation[2])))/Float(equation[1])))
+            if ambient[y][i] == 1{
+                return false
+            }
+        }
+        return true
+    }
+    
+    func lineHorVer(firstPoint: [Int], secondPoint: [Int]) -> Bool{
         
         if firstPoint[0] == secondPoint[0]{ // Vertical
             if firstPoint[1] < secondPoint[1]{
                 for point in firstPoint[1]...secondPoint[1] {
                     if ambient[point][firstPoint[0]] == 1 {
-                        sucessor = false
+                        return false
                     }
                 }
             } else {
                 for point in secondPoint[1]...firstPoint[1] {
                     if ambient[point][firstPoint[0]] == 1 {
-                        sucessor = false
+                        return false
                     }
                 }
             }
@@ -175,20 +152,19 @@ class ViewController: UIViewController {
             if firstPoint[0] < secondPoint[0]{
                 for point in firstPoint[0]...secondPoint[0] {
                     if ambient[firstPoint[1]][point] == 1{
-                        sucessor = false
+                        return false
                     }
                 }
             } else {
                 for point in secondPoint[0]...firstPoint[0] {
                     if ambient[firstPoint[1]][point] == 1{
-                        print("\(point)-\(firstPoint[1])")
-                        sucessor = false
+                        return false
                     }
                 }
             }
         }
         
-        return sucessor
+        return true
     }
     
     // Criando função da reta [0] = X ; [1] = Y
