@@ -10,15 +10,23 @@ import UIKit
 
 class Vertex: NSObject {
     
-    var position = [Int]() // Posição da aresta
+    var state = [Int]() // Posição da aresta
     var sucessors = [Vertex]() // Array com sucessores
     var father : Vertex? // Nó pai para gerar o caminho
     
-    init(position: [Int]) {
-        self.position = position
+    init(state: [Int]) {
+        self.state = state
     }
     
     func addToSucessor(vertex: Vertex){
         self.sucessors.append(vertex)
+    }
+    
+    func addFather(_ node: Vertex) {
+        self.father = node
+    }
+    
+    func setSuccessors(_ sucessors: [Vertex]) {
+        self.sucessors = sucessors
     }
 }

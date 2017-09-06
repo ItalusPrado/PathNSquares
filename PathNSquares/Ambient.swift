@@ -20,7 +20,7 @@ class Ambient: NSObject {
         for point in self.positions{
             self.createVertex(point: [point[1],point[0]])
         }
-        matrixVertex.sort{$0.position.first! < $1.position.first!}
+        matrixVertex.sort{$0.state.first! < $1.state.first!}
         
     }
     
@@ -34,7 +34,7 @@ class Ambient: NSObject {
         for i in 0..<matrixVertex.count{
             for j in i..<matrixVertex.count{
                 if i != j{
-                    if createSucessors(firstVertex: matrixVertex[i].position, secondVertex: matrixVertex[j].position){
+                    if createSucessors(firstVertex: matrixVertex[i].state, secondVertex: matrixVertex[j].state){
                         matrixVertex[i].addToSucessor(vertex: matrixVertex[j])
                         matrixVertex[j].addToSucessor(vertex: matrixVertex[i])
                     }
@@ -146,22 +146,22 @@ class Ambient: NSObject {
     private func createVertex(point: [Int]){
         if matrix[point[0]-1][point[1]-1] != 1 && matrix[point[0]-1][point[1]-1] != 2{
             matrix[point[0]-1][point[1]-1] = 2
-            let vertex = Vertex(position: [point[1]-1,point[0]-1])
+            let vertex = Vertex(state: [point[1]-1,point[0]-1])
             self.matrixVertex.append(vertex)
         }
         if matrix[point[0]+2][point[1]-1] != 1 && matrix[point[0]+2][point[1]-1] != 2{
             matrix[point[0]+2][point[1]-1] = 2
-            let vertex = Vertex(position: [point[1]-1,point[0]+2])
+            let vertex = Vertex(state: [point[1]-1,point[0]+2])
             self.matrixVertex.append(vertex)
         }
         if matrix[point[0]-1][point[1]+2] != 1 && matrix[point[0]-1][point[1]+2] != 2{
             matrix[point[0]-1][point[1]+2] = 2
-            let vertex = Vertex(position: [point[1]+2,point[0]-1])
+            let vertex = Vertex(state: [point[1]+2,point[0]-1])
             self.matrixVertex.append(vertex)
         }
         if matrix[point[0]+2][point[1]+2] != 1 && matrix[point[0]+2][point[1]+2] != 2{
             matrix[point[0]+2][point[1]+2] = 2
-            let vertex = Vertex(position: [point[1]+2,point[0]+2])
+            let vertex = Vertex(state: [point[1]+2,point[0]+2])
             self.matrixVertex.append(vertex)
         }
     }
