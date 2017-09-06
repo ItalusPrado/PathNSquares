@@ -12,7 +12,7 @@ class ViewController: UIViewController {
 
     
     // Usando objetos
-    let ambient = Ambient(ambientSize: 30, squaresQtd: 10)
+    let ambient = Ambient(ambientSize: 50, squaresQtd: 30)
     
     
     override func viewDidLoad() {
@@ -36,7 +36,6 @@ class ViewController: UIViewController {
             print(vert.father?.state)
         }
         
-        print("\nTESTE DE BUSCA DE LARGURA\n")
         
         var states = [Vertex: [Vertex]]()
         
@@ -47,14 +46,17 @@ class ViewController: UIViewController {
         let initialState = self.ambient.getVertex().first?.state
         let finalState = self.ambient.getVertex().last?.state
     
-        print("Initial State:")
+        print("\nInitial State:")
         print(initialState!)
         print("Final State:")
         print(finalState!)
         
         let agent = Agent(initialState: initialState!, finalState: finalState!, states: states)
         
+        print("\nTESTE DE BUSCA DE LARGURA\n")
         print(agent.problemSolvingWithBreadthSearch())
+        print("\nTESTE DE BUSCA DE PROFUNDIDADE\n")
+        print(agent.problemSolvingWithDepthSearch())
         
     }
 

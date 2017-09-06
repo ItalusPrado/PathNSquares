@@ -27,4 +27,10 @@ class Agent {
         
         return breadthSearch.search(from: initialState)
     }
+    
+    func problemSolvingWithDepthSearch() -> [[Int]] {
+        let depthSearch = DepthSearch(states: states, finalState: finalState)
+        
+        return depthSearch.search(from: initialState)
+    }
 }

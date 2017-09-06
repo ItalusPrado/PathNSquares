@@ -1,5 +1,5 @@
 //
-//  BreadthSearch.swift
+//  Problem.swift
 //  ArtificialInteligence
 //
 //  Created by Gabriel Cavalcante on 18/07/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BreadthSearch {
+class DepthSearch {
     
     var border: [Vertex] = []
     var currentState: Vertex!
@@ -31,7 +31,7 @@ class BreadthSearch {
     
     func search(from initialState: [Int]) -> [[Int]] {
         
-        print("\n\nBREADTH SEARCH")
+        print("\n\nDEPTH SEARCH")
         print("\nBorders:")
         
         if currentState == nil {
@@ -41,8 +41,8 @@ class BreadthSearch {
         while !isGoalState(currentState) {
             self.addToBorder(getSucessors(from: currentState))
             self.visited.append(currentState.state)
-            self.currentState = border.last
-            self.border.removeLast()
+            self.currentState = border.first
+            self.border.removeFirst()
         }
         
         return getPath()
