@@ -57,6 +57,8 @@ class ViewController: UIViewController {
         print(agent.problemSolvingWithBreadthSearch())
         print("\nTESTE DE BUSCA DE PROFUNDIDADE\n")
         print(agent.problemSolvingWithDepthSearch())
+        print("\nTESTE DE BUSCA BIDIRECIONAL\n")
+        print(agent.problemSolvingWithBidirectionalSearch(.BreadthXDepth))
         
     }
 

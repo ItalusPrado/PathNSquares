@@ -14,7 +14,7 @@ class DepthSearch {
     var currentState: Vertex!
     var finalState: [Int]!
     var states: [Vertex: [Vertex]]
-    var visited: [[Int]] = []
+    private var visited: [[Int]] = []
     
     init(states: [Vertex: [Vertex]], finalState: [Int]) {
         self.states = states

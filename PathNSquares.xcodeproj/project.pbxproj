@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		08547FAA1F60146D0072F8CB /* DepthSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08547FA91F60146D0072F8CB /* DepthSearch.swift */; };
+		08547FAC1F601AB00072F8CB /* BidirectionalSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08547FAB1F601AB00072F8CB /* BidirectionalSearch.swift */; };
 		087CC86E1F5F87AA0043EAC9 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087CC86D1F5F87AA0043EAC9 /* Array+Extension.swift */; };
 		087CC8701F5F87BC0043EAC9 /* BreadthSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087CC86F1F5F87BC0043EAC9 /* BreadthSearch.swift */; };
 		087CC8721F5F87C30043EAC9 /* Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087CC8711F5F87C30043EAC9 /* Agent.swift */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		08547FA91F60146D0072F8CB /* DepthSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepthSearch.swift; sourceTree = "<group>"; };
+		08547FAB1F601AB00072F8CB /* BidirectionalSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BidirectionalSearch.swift; sourceTree = "<group>"; };
 		087CC86D1F5F87AA0043EAC9 /* Array+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		087CC86F1F5F87BC0043EAC9 /* BreadthSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreadthSearch.swift; sourceTree = "<group>"; };
 		087CC8711F5F87C30043EAC9 /* Agent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Agent.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			children = (
 				08547FA91F60146D0072F8CB /* DepthSearch.swift */,
 				087CC86F1F5F87BC0043EAC9 /* BreadthSearch.swift */,
+				08547FAB1F601AB00072F8CB /* BidirectionalSearch.swift */,
 			);
 			name = Search;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08547FAC1F601AB00072F8CB /* BidirectionalSearch.swift in Sources */,
 				087CC8721F5F87C30043EAC9 /* Agent.swift in Sources */,
 				B9EE07DE1F5E0C880024E2E2 /* Ambient.swift in Sources */,
 				087CC86E1F5F87AA0043EAC9 /* Array+Extension.swift in Sources */,
