@@ -11,12 +11,14 @@ class Ambient: NSObject {
     private var matrixVertex = [Vertex]()
     
     init(ambientSize: Int, squaresQtd: Int) {
+        
         self.ambientSize = ambientSize
         self.squaresQtd = squaresQtd
         
         super.init()
         
         self.createAmbient()
+        
         for point in self.positions{
             self.createVertex(point: [point[1],point[0]])
         }
@@ -60,7 +62,7 @@ class Ambient: NSObject {
             sucessor = lineDiag(firstPoint: firstVertex, secondPoint: secondVertex)
             //print("\(firstVertex) - \(secondVertex) = \(sucessor) = Diagonal")
         }
-        print("\(firstVertex) - \(secondVertex) = \(sucessor)")
+        //print("\(firstVertex) - \(secondVertex) = \(sucessor)")
         return sucessor
     }
     
@@ -122,13 +124,18 @@ class Ambient: NSObject {
     }
     
     private func createAmbient(){
+        
         var array = [Int]()
+        
+        // Adicionando zeros a matriz
         for _ in 0..<ambientSize{
             array.append(0)
         }
         for _ in 0..<ambientSize{
             matrix.append(array)
         }
+        
+        // Adicionando quadrados
         for _ in 0..<squaresQtd{
             let x = Int(2+arc4random()%UInt32(ambientSize-5))
             let y = Int(1+arc4random()%UInt32(ambientSize-3))
@@ -144,6 +151,7 @@ class Ambient: NSObject {
     
     // Definindo as vertices de cada quadrado
     private func createVertex(point: [Int]){
+        
         if matrix[point[0]-1][point[1]-1] != 1 && matrix[point[0]-1][point[1]-1] != 2{
             matrix[point[0]-1][point[1]-1] = 2
             let vertex = Vertex(position: [point[1]-1,point[0]-1])

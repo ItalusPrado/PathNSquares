@@ -17,11 +17,13 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.ambient.printAmbiente()
         self.ambient.prepareSucessors()
         
         // Exemplo de como pegar todos os sucessores
         let sucessors = self.ambient.getVertex()[0].sucessors
+        //print(self.ambient.getVertex()[0].sucessors.count)
         
         // Adicionando um pai um nó qualquer
         for sucessor in 0..<sucessors.count {
@@ -32,6 +34,7 @@ class ViewController: UIViewController {
         
         // Verificando os pais de todos os nós
         let vertex = self.ambient.getVertex()
+        
         for vert in vertex{
             print(vert.father?.position)
         }
