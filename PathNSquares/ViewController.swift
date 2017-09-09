@@ -12,13 +12,12 @@ class ViewController: UIViewController {
 
     
     // Usando objetos
-    let ambient = Ambient(ambientSize: 50, squaresQtd: 30)
+    let ambient = Ambient(ambientSize: 100, squaresQtd: 10)
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.ambient.printAmbiente()
         self.ambient.prepareSucessors()
         
         // Exemplo de como pegar todos os sucessores

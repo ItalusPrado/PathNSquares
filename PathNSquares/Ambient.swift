@@ -26,7 +26,11 @@ class Ambient: NSObject {
         
     }
     
-    func printAmbiente(){
+    func returnAmbient() -> [[Int]]{
+        return self.matrix
+    }
+    
+    func printAmbient(){
         for line in self.matrix{
             print(line)
         }

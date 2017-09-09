@@ -12,6 +12,9 @@
 		087CC86E1F5F87AA0043EAC9 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087CC86D1F5F87AA0043EAC9 /* Array+Extension.swift */; };
 		087CC8701F5F87BC0043EAC9 /* BreadthSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087CC86F1F5F87BC0043EAC9 /* BreadthSearch.swift */; };
 		087CC8721F5F87C30043EAC9 /* Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087CC8711F5F87C30043EAC9 /* Agent.swift */; };
+		B9AFB3B51F63B7F200610A0D /* SceneKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AFB3B41F63B7F200610A0D /* SceneKitViewController.swift */; };
+		B9AFB3B71F63B84900610A0D /* SceneSquares.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AFB3B61F63B84900610A0D /* SceneSquares.swift */; };
+		B9AFB3B91F63BD1B00610A0D /* BoxNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AFB3B81F63BD1B00610A0D /* BoxNode.swift */; };
 		B9EE07B01F5859810024E2E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EE07AF1F5859810024E2E2 /* AppDelegate.swift */; };
 		B9EE07B21F5859810024E2E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EE07B11F5859810024E2E2 /* ViewController.swift */; };
 		B9EE07B51F5859810024E2E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9EE07B31F5859810024E2E2 /* Main.storyboard */; };
@@ -46,6 +49,9 @@
 		087CC86D1F5F87AA0043EAC9 /* Array+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		087CC86F1F5F87BC0043EAC9 /* BreadthSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreadthSearch.swift; sourceTree = "<group>"; };
 		087CC8711F5F87C30043EAC9 /* Agent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Agent.swift; sourceTree = "<group>"; };
+		B9AFB3B41F63B7F200610A0D /* SceneKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneKitViewController.swift; sourceTree = "<group>"; };
+		B9AFB3B61F63B84900610A0D /* SceneSquares.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneSquares.swift; sourceTree = "<group>"; };
+		B9AFB3B81F63BD1B00610A0D /* BoxNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxNode.swift; sourceTree = "<group>"; };
 		B9EE07AC1F5859810024E2E2 /* PathNSquares.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PathNSquares.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9EE07AF1F5859810024E2E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9EE07B11F5859810024E2E2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +120,16 @@
 			name = Extension;
 			sourceTree = "<group>";
 		};
+		B9AFB3B31F63B79700610A0D /* SceneKit */ = {
+			isa = PBXGroup;
+			children = (
+				B9AFB3B41F63B7F200610A0D /* SceneKitViewController.swift */,
+				B9AFB3B61F63B84900610A0D /* SceneSquares.swift */,
+				B9AFB3B81F63BD1B00610A0D /* BoxNode.swift */,
+			);
+			name = SceneKit;
+			sourceTree = "<group>";
+		};
 		B9EE07A31F5859800024E2E2 = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +153,7 @@
 		B9EE07AE1F5859810024E2E2 /* PathNSquares */ = {
 			isa = PBXGroup;
 			children = (
+				B9AFB3B31F63B79700610A0D /* SceneKit */,
 				B9EE07DF1F5E0CA70024E2E2 /* Objects */,
 				087CC86A1F5F87760043EAC9 /* Agent */,
 				087CC86B1F5F877D0043EAC9 /* Search */,
@@ -315,14 +332,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9AFB3B71F63B84900610A0D /* SceneSquares.swift in Sources */,
 				08547FAC1F601AB00072F8CB /* BidirectionalSearch.swift in Sources */,
 				087CC8721F5F87C30043EAC9 /* Agent.swift in Sources */,
 				B9EE07DE1F5E0C880024E2E2 /* Ambient.swift in Sources */,
 				087CC86E1F5F87AA0043EAC9 /* Array+Extension.swift in Sources */,
 				087CC8701F5F87BC0043EAC9 /* BreadthSearch.swift in Sources */,
 				B9EE07E11F5E106C0024E2E2 /* Vertex.swift in Sources */,
+				B9AFB3B91F63BD1B00610A0D /* BoxNode.swift in Sources */,
 				B9EE07B21F5859810024E2E2 /* ViewController.swift in Sources */,
 				B9EE07B01F5859810024E2E2 /* AppDelegate.swift in Sources */,
+				B9AFB3B51F63B7F200610A0D /* SceneKitViewController.swift in Sources */,
 				08547FAA1F60146D0072F8CB /* DepthSearch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
