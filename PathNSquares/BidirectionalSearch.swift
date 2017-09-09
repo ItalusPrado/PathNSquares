@@ -97,13 +97,13 @@ class BidirectionalSearch {
     }
     
     func addToBorders(_ successors: [Vertex], _ predecessors: [Vertex]) {
-        if notContains(currentState1.state, visited: visited1) {
+        if !visited1.contains(where: { $0 == currentState1.state }){
             for successor in successors {
                 self.border1.appendAtBeginning(newItem:successor)
             }
         }
         
-        if notContains(currentState2.state, visited: visited2) {
+        if !visited2.contains(where: { $0 == currentState2.state }){
             for predecessor in predecessors {
                 self.border2.appendAtBeginning(newItem:predecessor)
             }
@@ -112,18 +112,6 @@ class BidirectionalSearch {
 //        print(currentState1.state)
 //        print(currentState2.state)
 //        printBorders()
-    }
-    
-    func notContains(_ state: [Int], visited: [[Int]]) -> Bool {
-        for i in visited {
-            if i == state {
-                return false
-            } else {
-                return true
-            }
-        }
-        
-        return true
     }
     
     func removeFromBorders() {
