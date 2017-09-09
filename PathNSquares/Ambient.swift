@@ -73,9 +73,9 @@ class Ambient: NSObject {
     private func lineDiag(firstPoint: [Int], secondPoint: [Int]) -> Bool{
         
         let equation = generateEquation(firstPoint: firstPoint, secondPoint: secondPoint)
-        for i in firstPoint[0]...secondPoint[0]{
+        for i in stride(from: Double(firstPoint[0]), to: Double(secondPoint[0]), by: 0.1){
             let y = Int(round((-(Float(equation[0])*Float(i)+Float(equation[2])))/Float(equation[1])))
-            if matrix[y][i] == 1{
+            if matrix[y][Int(round(i))] == 1{
                 return false
             }
         }
