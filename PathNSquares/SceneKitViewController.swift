@@ -13,7 +13,7 @@ class SceneKitViewController: UIViewController {
 
     @IBOutlet weak var scnView: SCNView!
     
-    let ambient = Ambient(ambientSize: 30, squaresQtd: 40)
+    let ambient = Ambient(ambientSize: 50, squaresQtd: 50)
     var linePath = [[Int]]()
     var scene : SceneSquares!
     
@@ -29,6 +29,10 @@ class SceneKitViewController: UIViewController {
         configSceneView()
         self.scene.setBall(position: linePath.last!)
         self.scene.showPath(path: linePath)
+        
+        // add a tap gesture recognizer
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        scnView.addGestureRecognizer(tapGesture)
         
     }
     
@@ -56,7 +60,7 @@ class SceneKitViewController: UIViewController {
     }
 
     func configSceneView(){
-        self.scene = SceneSquares(withData: ambient.returnAmbient())
+        self.scene = SceneSquares(withData: ambient.returnAmbient(), vertexData: ambient.getVertex())
         
         self.scnView.backgroundColor = UIColor(red: 135/255, green: 206/255, blue: 250/255, alpha: 1)
         self.scnView.scene = scene
@@ -72,15 +76,43 @@ class SceneKitViewController: UIViewController {
         
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @objc
+    func handleTap(_ gestureRecognize: UIGestureRecognizer) {
+        // retrieve the SCNView
+        
+        // check what nodes are tapped
+        let p = gestureRecognize.location(in: scnView)
+        let hitResults = scnView.hitTest(p, options: [:])
+        // check that we clicked on at least one object
+        if hitResults.count > 0 {
+            // retrieved the first clicked object
+            let result = hitResults[0]
+            if let node = result.node as? BoxNode{
+                
+                for nodeInfo in node.successorsBox{
+                    let material = nodeInfo.geometry!.firstMaterial!
+                    // highlight it
+                    SCNTransaction.begin()
+                    SCNTransaction.animationDuration = 0.5
+                    
+                    // on completion - unhighlight
+                    SCNTransaction.completionBlock = {
+                        SCNTransaction.begin()
+                        SCNTransaction.animationDuration = 0.5
+                        
+                        material.emission.contents = UIColor.black
+                        
+                        SCNTransaction.commit()
+                    }
+                    
+                    material.emission.contents = UIColor.red
+                    
+                    SCNTransaction.commit()
+                }
+                
+            }
+            
+        }
     }
-    */
 
 }

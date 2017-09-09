@@ -12,8 +12,12 @@ import SceneKit
 class SceneSquares: SCNScene {
     
     var ball : SCNNode!
+    var boxVertex = [BoxNode]()
+    var vertex = [Vertex]()
     
-    init(withData data: [[Int]]) {
+    init(withData data: [[Int]], vertexData vertex: [Vertex]) {
+        self.vertex = vertex
+        
         super.init()
         
         self.configureLight()
@@ -59,8 +63,26 @@ class SceneSquares: SCNScene {
                     node = BoxNode(size: 1, color: .red, position: [line,col])
                 } else {
                     node = BoxNode(size: 1, color: .green, position: [line,col])
+                    boxVertex.append(node)
                 }
                 self.rootNode.addChildNode(node)
+            }
+        }
+        setSuccessorOnBox()
+    }
+    
+    func setSuccessorOnBox(){
+        for vertexPoint in self.vertex{
+            for box in self.boxVertex{
+                if box.positionBox == vertexPoint.state{
+                    for successor in vertexPoint.sucessors{
+                        for boxSuccessor in self.boxVertex{
+                            if successor.state == boxSuccessor.positionBox{
+                                box.successorsBox.append(boxSuccessor)
+                            }
+                        }
+                    }
+                }
             }
         }
     }
