@@ -65,7 +65,7 @@ class DepthSearch {
     }
     
     func addToBorder(_ successors: [Vertex]) {
-        if notContains(currentState.state) {
+        if !visited.contains(where: { $0 == currentState.state }){
             for successor in successors {
                 self.border.appendAtBeginning(newItem:successor)
             }
@@ -73,18 +73,6 @@ class DepthSearch {
         
 //        print(currentState.state)
 //        printBorder()
-    }
-    
-    func notContains(_ state: [Int]) -> Bool {
-        for i in visited {
-            if i == state {
-                return false
-            } else {
-                return true
-            }
-        }
-        
-        return true
     }
     
     func getPath() -> [[Int]] {
