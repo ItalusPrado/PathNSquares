@@ -69,6 +69,7 @@ class SceneSquares: SCNScene {
                 } else {
                     node = BoxNode(size: 1, color: .green, position: [line,col])
                     boxVertex.append(node)
+                    
                 }
                 self.rootNode.addChildNode(node)
             }

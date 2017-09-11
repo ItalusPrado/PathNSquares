@@ -13,28 +13,24 @@ class SceneKitViewController: UIViewController {
 
     @IBOutlet weak var scnView: SCNView!
     
-    let ambient = Ambient(ambientSize: 30, squaresQtd: 30, start: 2, end: 25)
+    let ambient = Ambient(ambientSize: 30, squaresQtd: 60)
     var linePath = [[Int]]()
     var scene : SceneSquares!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Data do problema
-        ambient.printAmbient()
-        ambient.prepareSucessors()
         
         // Visual do problema
-        linePath = createPath()
+        ambient.prepareSucessors()
+        
         configSceneView()
-        self.scene.setBall(position: linePath.last!)
-        self.scene.showPath(path: linePath)
         
         // add a tap gesture recognizer
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         scnView.addGestureRecognizer(tapGesture)
         
-        createPathLine()
+        
     }
     
     func createPath() -> [[Int]]{
@@ -44,15 +40,15 @@ class SceneKitViewController: UIViewController {
             states[vertex] = vertex.sucessors
         }
         
-        let initialState = self.ambient.getVertex().first!.state
-        let finalState = self.ambient.getVertex().last!.state
+        let initialState = self.ambient.initialVertex
+        let finalState = self.ambient.finalVertex
         
         print("\nInitial State:")
         print(initialState)
         print("Final State:")
         print(finalState)
         
-        let agent = Agent(initialState: initialState, finalState: finalState, states: states)
+        let agent = Agent(initialState: initialState!.state, finalState: finalState!.state, states: states)
         
         print("\nTESTE DE BUSCA DE LARGURA\n")
         let path = agent.problemSolvingWithBreadthSearch()
@@ -65,7 +61,7 @@ class SceneKitViewController: UIViewController {
         
         self.scnView.backgroundColor = .white //UIColor(red: 135/255, green: 206/255, blue: 250/255, alpha: 1)
         self.scnView.scene = scene
-        self.scnView.showsStatistics = true
+        //self.scnView.showsStatistics = true
         
         // CAMERA
         scnView.allowsCameraControl = true
@@ -93,12 +89,12 @@ class SceneKitViewController: UIViewController {
                     let material = nodeInfo.geometry!.firstMaterial!
                     // highlight it
                     SCNTransaction.begin()
-                    SCNTransaction.animationDuration = 0.5
+                    SCNTransaction.animationDuration = 1
                     
                     // on completion - unhighlight
                     SCNTransaction.completionBlock = {
                         SCNTransaction.begin()
-                        SCNTransaction.animationDuration = 0.5
+                        SCNTransaction.animationDuration = 1
                         
                         material.emission.contents = UIColor.black
                         
@@ -129,4 +125,12 @@ class SceneKitViewController: UIViewController {
         scene.rootNode.addChildNode(twoPointsNode1.buildLineInTwoPointsWithRotation(
             from: vector1, to: vector2, radius: 0.05, color: .gray))
     }
+    
+    @IBAction func searchBtn(_ sender: Any) {
+        linePath = createPath()
+        self.scene.setBall(position: linePath.last!)
+        self.scene.showPath(path: linePath)
+        createPathLine()
+    }
+    
 }

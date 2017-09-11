@@ -6,18 +6,13 @@ class Ambient: NSObject {
     private var squaresQtd : Int! // Quantidade de quadrados no problema
     private var matrix = [[Int]]() // Criação de uma matrix NxN que será o ambiente
     private var positions = [[Int]]() // Posições dos quadrados
-    var initial : Int
     var initialVertex : Vertex!
-    var final : Int
     var finalVertex : Vertex!
     //Cada quadrado ocupa 4 pontos na matrix ambiente
     
     private var matrixVertex = [Vertex]()
     
-    init(ambientSize: Int, squaresQtd: Int, start: Int, end: Int) {
-        
-        self.initial = start
-        self.final = end
+    init(ambientSize: Int, squaresQtd: Int) {
         self.ambientSize = ambientSize
         self.squaresQtd = squaresQtd
         
@@ -28,6 +23,7 @@ class Ambient: NSObject {
         for point in self.positions{
             self.createVertex(point: [point[1],point[0]])
         }
+        self.objectivePoints()
         matrixVertex.sort{$0.state.first! < $1.state.first!}
         
     }
@@ -87,7 +83,6 @@ class Ambient: NSObject {
         }
         return true
     }
-    
     private func lineHorVer(firstPoint: [Int], secondPoint: [Int]) -> Bool{
         
         if firstPoint[0] == secondPoint[0]{ // Vertical
@@ -163,6 +158,33 @@ class Ambient: NSObject {
         
     }
     
+    func objectivePoints(){
+        // Adicionando inicial e final na matriz de data
+        var col1 = Int(arc4random()%UInt32(self.matrix[0].count))
+        var row1 = Int(arc4random()%UInt32(self.matrix.count))
+        
+        var col2 = Int(arc4random()%UInt32(self.matrix[0].count))
+        var row2 = Int(arc4random()%UInt32(self.matrix.count))
+        
+        while self.matrix[row1][col1] == 1 || self.matrix[row1][col1] == 2 {
+            col1 = Int(arc4random()%UInt32(self.matrix[0].count))
+            row1 = Int(arc4random()%UInt32(self.matrix.count))
+        }
+        self.matrix[row1][col1] = 3
+        self.initialVertex = Vertex(state: [col1,row1])
+        
+        while self.matrix[row2][col2] == 1 || self.matrix[row2][col2] == 2 || self.matrix[row2][col2] == 3 {
+            col2 = Int(arc4random()%UInt32(self.matrix[0].count))
+            row2 = Int(arc4random()%UInt32(self.matrix.count))
+        }
+        
+        self.matrix[row2][col2] = 3
+        self.finalVertex = Vertex(state: [col2,row2])
+        
+        self.matrixVertex.append(self.initialVertex)
+        self.matrixVertex.append(self.finalVertex)
+    }
+    
     // Definindo as vertices de cada quadrado
     private func createVertex(point: [Int]){
         
@@ -186,13 +208,7 @@ class Ambient: NSObject {
             let vertex = Vertex(state: [point[1]+2,point[0]+2])
             self.matrixVertex.append(vertex)
         }
-        // Adicionando inicial e final na matriz de data
-        self.matrix[initial][0] = 3
-        self.matrix[final][self.matrix[0].count-1] = 3
-        let vertexInitial = Vertex(state: [0,initial])
-        let vertexFinal = Vertex(state: [self.matrix[0].count-1,final])
-        self.matrixVertex.append(vertexInitial)
-        self.matrixVertex.append(vertexFinal)
+        
     }
     
 }

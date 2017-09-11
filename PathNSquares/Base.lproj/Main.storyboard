@@ -6,6 +6,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13156.2"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -41,12 +43,27 @@
                             <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yM9-z4-bXB">
                                 <rect key="frame" x="-0.5" y="-0.5" width="667" height="375"/>
                             </sceneKitView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rsD-43-7sr">
+                                <rect key="frame" x="20" y="325" width="61" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="rsD-43-7sr" secondAttribute="height" multiplier="61:30" id="2co-Ct-Hfp"/>
+                                </constraints>
+                                <state key="normal" title="Search">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="searchBtn:" destination="EqU-RN-eZr" eventType="touchUpInside" id="BB5-ZF-VW7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="5uD-3k-tAq" firstAttribute="top" secondItem="rsD-43-7sr" secondAttribute="bottom" constant="20" id="E9w-RR-xwM"/>
                             <constraint firstItem="yM9-z4-bXB" firstAttribute="centerY" secondItem="jjt-8z-75H" secondAttribute="centerY" id="EaL-Bf-6Jm"/>
                             <constraint firstItem="yM9-z4-bXB" firstAttribute="height" secondItem="jjt-8z-75H" secondAttribute="height" id="IO6-tu-uuc"/>
                             <constraint firstItem="yM9-z4-bXB" firstAttribute="width" secondItem="jjt-8z-75H" secondAttribute="width" id="JpK-a9-oVS"/>
+                            <constraint firstItem="rsD-43-7sr" firstAttribute="leading" secondItem="jjt-8z-75H" secondAttribute="leadingMargin" id="l7B-Xf-X4L"/>
                             <constraint firstItem="yM9-z4-bXB" firstAttribute="centerX" secondItem="jjt-8z-75H" secondAttribute="centerX" id="otG-Kn-xaH"/>
                         </constraints>
                     </view>
@@ -56,7 +73,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eT2-B0-nQr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1028" y="146"/>
+            <point key="canvasLocation" x="1027.736131934033" y="144.80000000000001"/>
         </scene>
     </scenes>
 </document>
