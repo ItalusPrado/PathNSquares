@@ -138,7 +138,7 @@ class Ambient: NSObject {
         var array = [Int]()
         
         // Adicionando zeros a matriz
-        for _ in 0..<ambientSize{
+        for _ in 0..<(ambientSize*2)-2{
             array.append(0)
         }
         for _ in 0..<ambientSize{
@@ -147,8 +147,8 @@ class Ambient: NSObject {
         
         // Adicionando quadrados
         for _ in 0..<squaresQtd{
-            let x = Int(2+arc4random()%UInt32(ambientSize-5))
-            let y = Int(1+arc4random()%UInt32(ambientSize-3))
+            let x = Int(2+arc4random()%UInt32(self.matrix[0].count-5))
+            let y = Int(1+arc4random()%UInt32(self.matrix.count-3))
             
             self.positions.append([x,y])
             self.matrix[y][x] = 1
@@ -188,9 +188,9 @@ class Ambient: NSObject {
         }
         // Adicionando inicial e final na matriz de data
         self.matrix[initial][0] = 3
-        self.matrix[final][ambientSize-1] = 3
+        self.matrix[final][self.matrix[0].count-1] = 3
         let vertexInitial = Vertex(state: [0,initial])
-        let vertexFinal = Vertex(state: [ambientSize-1,final])
+        let vertexFinal = Vertex(state: [self.matrix[0].count-1,final])
         self.matrixVertex.append(vertexInitial)
         self.matrixVertex.append(vertexFinal)
     }

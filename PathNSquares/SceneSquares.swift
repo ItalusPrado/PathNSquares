@@ -14,9 +14,11 @@ class SceneSquares: SCNScene {
     var ball : SCNNode!
     var boxVertex = [BoxNode]()
     var vertex = [Vertex]()
+    var info = [[Int]]()
     
     init(withData data: [[Int]], vertexData vertex: [Vertex]) {
         self.vertex = vertex
+        self.info = data
         
         super.init()
         
@@ -56,7 +58,7 @@ class SceneSquares: SCNScene {
         
         for line in 0..<data.count{
             var node : BoxNode!
-            for col in 0..<data.count{
+            for col in 0..<data[0].count{
                 if data[line][col] == 0{
                     node = BoxNode(size: 1, color: .white, position: [line,col])
                 } else if data[line][col] == 1{
@@ -95,7 +97,7 @@ class SceneSquares: SCNScene {
         let lightNode = SCNNode()
         lightNode.light = SCNLight()
         lightNode.light!.type = .omni
-        lightNode.position = SCNVector3(x: 0, y: 10, z: 10)
+        lightNode.position = SCNVector3(x: Float(self.info[0].count/2), y: 30, z: 10)
         self.rootNode.addChildNode(lightNode)
         
         // create and add an ambient light to the scene

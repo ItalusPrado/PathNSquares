@@ -63,7 +63,7 @@ class SceneKitViewController: UIViewController {
     func configSceneView(){
         self.scene = SceneSquares(withData: ambient.returnAmbient(), vertexData: ambient.getVertex())
         
-        self.scnView.backgroundColor = UIColor(red: 135/255, green: 206/255, blue: 250/255, alpha: 1)
+        self.scnView.backgroundColor = .white //UIColor(red: 135/255, green: 206/255, blue: 250/255, alpha: 1)
         self.scnView.scene = scene
         self.scnView.showsStatistics = true
         
@@ -71,7 +71,7 @@ class SceneKitViewController: UIViewController {
         scnView.allowsCameraControl = true
         let cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()
-        cameraNode.position = SCNVector3(ambient.returnAmbient().count/2,ambient.returnAmbient().count,ambient.returnAmbient().count/2)
+        cameraNode.position = SCNVector3(ambient.returnAmbient()[0].count/2,ambient.returnAmbient().count,ambient.returnAmbient().count/2)
         cameraNode.eulerAngles = SCNVector3(-Double.pi/2,0,0)
         self.scnView.scene?.rootNode.addChildNode(cameraNode)
     }
