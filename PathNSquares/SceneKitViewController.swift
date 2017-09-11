@@ -55,7 +55,7 @@ class SceneKitViewController: UIViewController {
         let agent = Agent(initialState: initialState, finalState: finalState, states: states)
         
         print("\nTESTE DE BUSCA DE LARGURA\n")
-        let path = agent.problemSolvingWithDepthSearch()
+        let path = agent.problemSolvingWithBreadthSearch()
         print(path)
         return path
     }
@@ -123,10 +123,10 @@ class SceneKitViewController: UIViewController {
     }
     
     func createLine(between point1: [Int], and point2: [Int]) {
-        let vector1 = SCNVector3(point1[0],0,point1[1])
-        let vector2 = SCNVector3(point2[0], 0, point2[1])
+        let vector1 = SCNVector3(CGFloat(point1[0]),1,CGFloat(point1[1]))
+        let vector2 = SCNVector3(CGFloat(point2[0]), 1, CGFloat(point2[1]))
         let twoPointsNode1 = SCNNode()
         scene.rootNode.addChildNode(twoPointsNode1.buildLineInTwoPointsWithRotation(
-            from: vector1, to: vector2, radius: 0.6, color: .gray))
+            from: vector1, to: vector2, radius: 0.05, color: .gray))
     }
 }
