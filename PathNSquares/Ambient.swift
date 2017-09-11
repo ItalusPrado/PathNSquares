@@ -6,12 +6,18 @@ class Ambient: NSObject {
     private var squaresQtd : Int! // Quantidade de quadrados no problema
     private var matrix = [[Int]]() // Criação de uma matrix NxN que será o ambiente
     private var positions = [[Int]]() // Posições dos quadrados
+    var initial : Int
+    var initialVertex : Vertex!
+    var final : Int
+    var finalVertex : Vertex!
     //Cada quadrado ocupa 4 pontos na matrix ambiente
     
     private var matrixVertex = [Vertex]()
     
-    init(ambientSize: Int, squaresQtd: Int) {
+    init(ambientSize: Int, squaresQtd: Int, start: Int, end: Int) {
         
+        self.initial = start
+        self.final = end
         self.ambientSize = ambientSize
         self.squaresQtd = squaresQtd
         
@@ -73,7 +79,7 @@ class Ambient: NSObject {
     private func lineDiag(firstPoint: [Int], secondPoint: [Int]) -> Bool{
         
         let equation = generateEquation(firstPoint: firstPoint, secondPoint: secondPoint)
-        for i in stride(from: Double(firstPoint[0]), to: Double(secondPoint[0]), by: 0.1){
+        for i in stride(from: Double(firstPoint[0]), to: Double(secondPoint[0]), by: 0.01){
             let y = Int(round((-(Float(equation[0])*Float(i)+Float(equation[2])))/Float(equation[1])))
             if matrix[y][Int(round(i))] == 1{
                 return false
@@ -150,7 +156,11 @@ class Ambient: NSObject {
             self.matrix[y][x+1] = 1
             self.matrix[y+1][x+1] = 1
         }
+        
         self.positions.sort{ $0.first! < $1.first! }
+        
+        
+        
     }
     
     // Definindo as vertices de cada quadrado
@@ -176,6 +186,13 @@ class Ambient: NSObject {
             let vertex = Vertex(state: [point[1]+2,point[0]+2])
             self.matrixVertex.append(vertex)
         }
+        // Adicionando inicial e final na matriz de data
+        self.matrix[initial][0] = 3
+        self.matrix[final][ambientSize-1] = 3
+        let vertexInitial = Vertex(state: [0,initial])
+        let vertexFinal = Vertex(state: [ambientSize-1,final])
+        self.matrixVertex.append(vertexInitial)
+        self.matrixVertex.append(vertexFinal)
     }
     
 }

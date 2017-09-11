@@ -12,7 +12,7 @@ class ViewController: UIViewController {
 
     
     // Usando objetos
-    let ambient = Ambient(ambientSize: 100, squaresQtd: 10)
+    let ambient = Ambient(ambientSize: 100, squaresQtd: 10, start: 1, end: 2)
     
     
     override func viewDidLoad() {

@@ -29,7 +29,7 @@ class SceneSquares: SCNScene {
     }
     
     func setBall(position: [Int]){
-        let geometry = SCNSphere(radius: 0.5)
+        let geometry = SCNSphere(radius: 0.1)
         geometry.materials.first?.diffuse.contents = UIColor.black
         
         self.ball = SCNNode(geometry: geometry)
@@ -61,6 +61,9 @@ class SceneSquares: SCNScene {
                     node = BoxNode(size: 1, color: .white, position: [line,col])
                 } else if data[line][col] == 1{
                     node = BoxNode(size: 1, color: .red, position: [line,col])
+                } else if data[line][col] == 3 {
+                    node = BoxNode(size: 1, color: .blue, position: [line,col])
+                    boxVertex.append(node)
                 } else {
                     node = BoxNode(size: 1, color: .green, position: [line,col])
                     boxVertex.append(node)

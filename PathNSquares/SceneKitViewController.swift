@@ -13,7 +13,7 @@ class SceneKitViewController: UIViewController {
 
     @IBOutlet weak var scnView: SCNView!
     
-    let ambient = Ambient(ambientSize: 30, squaresQtd: 20)
+    let ambient = Ambient(ambientSize: 30, squaresQtd: 30, start: 2, end: 25)
     var linePath = [[Int]]()
     var scene : SceneSquares!
     
@@ -43,15 +43,15 @@ class SceneKitViewController: UIViewController {
             states[vertex] = vertex.sucessors
         }
         
-        let initialState = self.ambient.getVertex().first?.state
-        let finalState = self.ambient.getVertex().last?.state
+        let initialState = self.ambient.getVertex().first!.state
+        let finalState = self.ambient.getVertex().last!.state
         
         print("\nInitial State:")
-        print(initialState!)
+        print(initialState)
         print("Final State:")
-        print(finalState!)
+        print(finalState)
         
-        let agent = Agent(initialState: initialState!, finalState: finalState!, states: states)
+        let agent = Agent(initialState: initialState, finalState: finalState, states: states)
         
         print("\nTESTE DE BUSCA DE LARGURA\n")
         let path = agent.problemSolvingWithDepthSearch()
