@@ -14,6 +14,7 @@ class Vertex: NSObject {
     var sucessors = [Vertex]() // Array com sucessores
     var costSuccessors = [Int]()
     var father : Vertex? // Nó pai para gerar o caminho
+    var cost: Int = 0
     
     init(state: [Int]) {
         self.state = state

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		082AC7F51F68536700F4AFAB /* UniformedSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082AC7F41F68536700F4AFAB /* UniformedSearch.swift */; };
 		08547FAA1F60146D0072F8CB /* DepthSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08547FA91F60146D0072F8CB /* DepthSearch.swift */; };
 		08547FAC1F601AB00072F8CB /* BidirectionalSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08547FAB1F601AB00072F8CB /* BidirectionalSearch.swift */; };
 		087CC86E1F5F87AA0043EAC9 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087CC86D1F5F87AA0043EAC9 /* Array+Extension.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		082AC7F41F68536700F4AFAB /* UniformedSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UniformedSearch.swift; sourceTree = "<group>"; };
 		08547FA91F60146D0072F8CB /* DepthSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepthSearch.swift; sourceTree = "<group>"; };
 		08547FAB1F601AB00072F8CB /* BidirectionalSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BidirectionalSearch.swift; sourceTree = "<group>"; };
 		087CC86D1F5F87AA0043EAC9 /* Array+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				08547FA91F60146D0072F8CB /* DepthSearch.swift */,
 				087CC86F1F5F87BC0043EAC9 /* BreadthSearch.swift */,
 				08547FAB1F601AB00072F8CB /* BidirectionalSearch.swift */,
+				082AC7F41F68536700F4AFAB /* UniformedSearch.swift */,
 			);
 			name = Search;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				B9EE07B21F5859810024E2E2 /* ViewController.swift in Sources */,
 				088C2B291F647F8500940296 /* SNNode+Extension.swift in Sources */,
 				B9EE07B01F5859810024E2E2 /* AppDelegate.swift in Sources */,
+				082AC7F51F68536700F4AFAB /* UniformedSearch.swift in Sources */,
 				B9AFB3B51F63B7F200610A0D /* SceneKitViewController.swift in Sources */,
 				08547FAA1F60146D0072F8CB /* DepthSearch.swift in Sources */,
 			);

@@ -44,14 +44,14 @@ class SceneKitViewController: UIViewController {
         let finalState = self.ambient.finalVertex
         
         print("\nInitial State:")
-        print(initialState)
+        print(initialState!)
         print("Final State:")
-        print(finalState)
+        print(finalState!)
         
         let agent = Agent(initialState: initialState!.state, finalState: finalState!.state, states: states)
         
         print("\nTESTE DE BUSCA DE LARGURA\n")
-        let path = agent.problemSolvingWithBreadthSearch()
+        let path = agent.problemSolvingWithUniformedSearch()
         print(path)
         return path
     }
