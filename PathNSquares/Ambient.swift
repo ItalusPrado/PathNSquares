@@ -3,16 +3,19 @@ import UIKit
 class Ambient: NSObject {
 
     private var ambientSize : Int! // Tamanho do ambiente trabalhado
+    private var squareSize : Int!
     private var squaresQtd : Int! // Quantidade de quadrados no problema
     private var matrix = [[Int]]() // Criação de uma matrix NxN que será o ambiente
     private var positions = [[Int]]() // Posições dos quadrados
     var initialVertex : Vertex!
     var finalVertex : Vertex!
+    
     //Cada quadrado ocupa 4 pontos na matrix ambiente
     
     private var matrixVertex = [Vertex]()
     
-    init(ambientSize: Int, squaresQtd: Int) {
+    init(ambientSize: Int, squaresQtd: Int, squareSize: Int) {
+        self.squareSize = squareSize
         self.ambientSize = ambientSize
         self.squaresQtd = squaresQtd
         
@@ -43,8 +46,9 @@ class Ambient: NSObject {
             for j in i..<matrixVertex.count{
                 if i != j{
                     if createSucessors(firstVertex: matrixVertex[i].state, secondVertex: matrixVertex[j].state){
-                        matrixVertex[i].addToSucessor(vertex: matrixVertex[j])
-                        matrixVertex[j].addToSucessor(vertex: matrixVertex[i])
+                        let uniformeCost = Int(Swift.abs(Int32(matrixVertex[i].state[0]-matrixVertex[j].state[0]))+Swift.abs(Int32(matrixVertex[i].state[1]-matrixVertex[j].state[1])))
+                        matrixVertex[i].addToSucessor(vertex: matrixVertex[j], uniformCost: uniformeCost)
+                        matrixVertex[j].addToSucessor(vertex: matrixVertex[i], uniformCost: uniformeCost)
                     }
                 }
             }
@@ -142,14 +146,16 @@ class Ambient: NSObject {
         
         // Adicionando quadrados
         for _ in 0..<squaresQtd{
-            let x = Int(2+arc4random()%UInt32(self.matrix[0].count-5))
-            let y = Int(1+arc4random()%UInt32(self.matrix.count-3))
+            let x = Int(1+arc4random()%UInt32(self.matrix[0].count-squareSize-1))
+            let y = Int(1+arc4random()%UInt32(self.matrix.count-squareSize-1))
             
             self.positions.append([x,y])
-            self.matrix[y][x] = 1
-            self.matrix[y+1][x] = 1
-            self.matrix[y][x+1] = 1
-            self.matrix[y+1][x+1] = 1
+            for point in 0..<self.squareSize{
+                for point2 in 0..<self.squareSize{
+                    print("\(y+point)-\(x+point2)")
+                    self.matrix[y+point][x+point2] = 1
+                }
+            }
         }
         
         self.positions.sort{ $0.first! < $1.first! }
@@ -193,19 +199,19 @@ class Ambient: NSObject {
             let vertex = Vertex(state: [point[1]-1,point[0]-1])
             self.matrixVertex.append(vertex)
         }
-        if matrix[point[0]+2][point[1]-1] != 1 && matrix[point[0]+2][point[1]-1] != 2{
-            matrix[point[0]+2][point[1]-1] = 2
-            let vertex = Vertex(state: [point[1]-1,point[0]+2])
+        if matrix[point[0]+squareSize][point[1]-1] != 1 && matrix[point[0]+squareSize][point[1]-1] != 2{
+            matrix[point[0]+squareSize][point[1]-1] = 2
+            let vertex = Vertex(state: [point[1]-1,point[0]+squareSize])
             self.matrixVertex.append(vertex)
         }
-        if matrix[point[0]-1][point[1]+2] != 1 && matrix[point[0]-1][point[1]+2] != 2{
-            matrix[point[0]-1][point[1]+2] = 2
-            let vertex = Vertex(state: [point[1]+2,point[0]-1])
+        if matrix[point[0]-1][point[1]+squareSize] != 1 && matrix[point[0]-1][point[1]+squareSize] != 2{
+            matrix[point[0]-1][point[1]+squareSize] = 2
+            let vertex = Vertex(state: [point[1]+squareSize,point[0]-1])
             self.matrixVertex.append(vertex)
         }
-        if matrix[point[0]+2][point[1]+2] != 1 && matrix[point[0]+2][point[1]+2] != 2{
-            matrix[point[0]+2][point[1]+2] = 2
-            let vertex = Vertex(state: [point[1]+2,point[0]+2])
+        if matrix[point[0]+squareSize][point[1]+squareSize] != 1 && matrix[point[0]+squareSize][point[1]+squareSize] != 2{
+            matrix[point[0]+squareSize][point[1]+squareSize] = 2
+            let vertex = Vertex(state: [point[1]+squareSize,point[0]+squareSize])
             self.matrixVertex.append(vertex)
         }
         

@@ -13,7 +13,7 @@ class SceneKitViewController: UIViewController {
 
     @IBOutlet weak var scnView: SCNView!
     
-    let ambient = Ambient(ambientSize: 30, squaresQtd: 60)
+    let ambient = Ambient(ambientSize: 30, squaresQtd: 40, squareSize: 6)
     var linePath = [[Int]]()
     var scene : SceneSquares!
     
