@@ -53,14 +53,14 @@ class ViewController: UIViewController {
         print("Final State:")
         print(finalState!)
         
-        let agent = Agent(initialState: initialState!, finalState: finalState!, states: states)
-        
-        print("\nTESTE DE BUSCA DE LARGURA\n")
-        print(agent.problemSolvingWithBreadthSearch())
-        print("\nTESTE DE BUSCA DE PROFUNDIDADE\n")
-        print(agent.problemSolvingWithDepthSearch())
-        print("\nTESTE DE BUSCA BIDIRECIONAL\n")
-        print(agent.problemSolvingWithBidirectionalSearch(.BreadthXDepth))
+//        let agent = Agent(initialState: initialState!, finalState: finalState!, states: states)
+//        
+//        print("\nTESTE DE BUSCA DE LARGURA\n")
+//        print(agent.problemSolvingWithBreadthSearch())
+//        print("\nTESTE DE BUSCA DE PROFUNDIDADE\n")
+//        print(agent.problemSolvingWithDepthSearch())
+//        print("\nTESTE DE BUSCA BIDIRECIONAL\n")
+//        print(agent.problemSolvingWithBidirectionalSearch(.BreadthXDepth))
         
     }
 

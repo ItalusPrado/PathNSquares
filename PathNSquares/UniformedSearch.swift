@@ -13,11 +13,11 @@ class UniformedSearch {
     var border: [Vertex] = []
     var currentState: Vertex!
     var finalState: [Int]!
-    var states: [Vertex: [Vertex]]
+    var states: [State]
     private var visited: [[Int]] = []
     var cost:Int = 0
     
-    init(states: [Vertex: [Vertex]], finalState: [Int]) {
+    init(states: [State], finalState: [Int]) {
         self.states = states
         self.finalState = finalState
     }
@@ -53,18 +53,14 @@ class UniformedSearch {
         var successors: [Vertex] = []
         
         for state in states {
-            if state.key.state == node.state {
-                for (index, key) in state.value.enumerated() {
+            if state.getKey().state == node.state {
+                for successor in state.getSuccessors() {
                     
-                    let newNode = Vertex(state: key.state)
+                    let newNode = Vertex(state: successor.getKey().state)
                     newNode.addFather(node)
                     
-                    //NECESSÁRIO PEGAR O CUSTO DO SUCESSOR
-                    let newCost = node.cost+key.cost
-                    newNode.cost = newCost
-                    
-//                    let newCost = node.cost+key.getCost()
-//                    newNode.setCost(newCost)
+                    let newCost = node.cost+successor.getCost()
+                    newNode.setNodeCost(newCost)
                     
                     successors.append(newNode)
                 }
@@ -83,9 +79,9 @@ class UniformedSearch {
         
         self.border.sort(by: {$0.0.cost > $0.1.cost})
         
-        print(currentState.state)
-        print(currentState.cost)
-        printBorder()
+//        print(currentState.state)
+//        print(currentState.cost)
+//        printBorder()
     }
     
     func getPath() -> [[Int]] {

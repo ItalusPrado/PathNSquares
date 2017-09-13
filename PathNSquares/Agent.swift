@@ -12,11 +12,11 @@ class Agent {
     
     var initialState: [Int]!
     var finalState: [Int]!
-    var states: [Vertex : [Vertex]]!
+    var states: [State]!
     var successor: [Vertex]? = nil
     var cost: Int = 0
     
-    init(initialState: [Int], finalState: [Int], states: [Vertex : [Vertex]]) {
+    init(initialState: [Int], finalState: [Int], states: [State]) {
         self.initialState = initialState
         self.finalState = finalState
         self.states = states

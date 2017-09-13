@@ -10,6 +10,7 @@
 		082AC7F51F68536700F4AFAB /* UniformedSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082AC7F41F68536700F4AFAB /* UniformedSearch.swift */; };
 		08547FAA1F60146D0072F8CB /* DepthSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08547FA91F60146D0072F8CB /* DepthSearch.swift */; };
 		08547FAC1F601AB00072F8CB /* BidirectionalSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08547FAB1F601AB00072F8CB /* BidirectionalSearch.swift */; };
+		0871E8051F68D4F100A15B35 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0871E8041F68D4F100A15B35 /* State.swift */; };
 		087CC86E1F5F87AA0043EAC9 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087CC86D1F5F87AA0043EAC9 /* Array+Extension.swift */; };
 		087CC8701F5F87BC0043EAC9 /* BreadthSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087CC86F1F5F87BC0043EAC9 /* BreadthSearch.swift */; };
 		087CC8721F5F87C30043EAC9 /* Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087CC8711F5F87C30043EAC9 /* Agent.swift */; };
@@ -49,6 +50,7 @@
 		082AC7F41F68536700F4AFAB /* UniformedSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UniformedSearch.swift; sourceTree = "<group>"; };
 		08547FA91F60146D0072F8CB /* DepthSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepthSearch.swift; sourceTree = "<group>"; };
 		08547FAB1F601AB00072F8CB /* BidirectionalSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BidirectionalSearch.swift; sourceTree = "<group>"; };
+		0871E8041F68D4F100A15B35 /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		087CC86D1F5F87AA0043EAC9 /* Array+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		087CC86F1F5F87BC0043EAC9 /* BreadthSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreadthSearch.swift; sourceTree = "<group>"; };
 		087CC8711F5F87C30043EAC9 /* Agent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Agent.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 		087CC86A1F5F87760043EAC9 /* Agent */ = {
 			isa = PBXGroup;
 			children = (
+				0871E8041F68D4F100A15B35 /* State.swift */,
 				087CC8711F5F87C30043EAC9 /* Agent.swift */,
 			);
 			name = Agent;
@@ -346,6 +349,7 @@
 				087CC8701F5F87BC0043EAC9 /* BreadthSearch.swift in Sources */,
 				B9EE07E11F5E106C0024E2E2 /* Vertex.swift in Sources */,
 				B9AFB3B91F63BD1B00610A0D /* BoxNode.swift in Sources */,
+				0871E8051F68D4F100A15B35 /* State.swift in Sources */,
 				B9EE07B21F5859810024E2E2 /* ViewController.swift in Sources */,
 				088C2B291F647F8500940296 /* SNNode+Extension.swift in Sources */,
 				B9EE07B01F5859810024E2E2 /* AppDelegate.swift in Sources */,

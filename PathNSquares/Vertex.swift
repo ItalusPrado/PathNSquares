@@ -12,7 +12,6 @@ class Vertex: NSObject {
     
     var state = [Int]() // Posição da aresta
     var sucessors = [Vertex]() // Array com sucessores
-    var costSuccessors = [Int]()
     var father : Vertex? // Nó pai para gerar o caminho
     var cost: Int = 0
     
@@ -20,9 +19,8 @@ class Vertex: NSObject {
         self.state = state
     }
     
-    func addToSucessor(vertex: Vertex, uniformCost: Int){
+    func addToSucessor(vertex: Vertex){
         self.sucessors.append(vertex)
-        self.costSuccessors.append(uniformCost)
     }
     
     func addFather(_ node: Vertex) {
@@ -33,7 +31,11 @@ class Vertex: NSObject {
         self.sucessors = sucessors
     }
     
-    func getCost(position: Int) -> Int {
-        return self.costSuccessors[position]
+    func getCost() -> Int {
+        return self.cost
+    }
+    
+    func setNodeCost(_ cost: Int) {
+        self.cost = cost
     }
 }

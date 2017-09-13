@@ -13,10 +13,10 @@ class BreadthSearch {
     var border: [Vertex] = []
     var currentState: Vertex!
     var finalState: [Int]!
-    var states: [Vertex: [Vertex]]
+    var states: [State]
     private var visited: [[Int]] = []
     
-    init(states: [Vertex: [Vertex]], finalState: [Int]) {
+    init(states: [State], finalState: [Int]) {
         self.states = states
         self.finalState = finalState
     }
@@ -52,9 +52,9 @@ class BreadthSearch {
         var successors: [Vertex] = []
         
         for state in states {
-            if state.key.state == node.state {
-                for key in state.value {
-                    let newNode = Vertex(state: key.state)
+            if state.getKey().state == node.state {
+                for successor in state.getSuccessors() {
+                    let newNode = Vertex(state: successor.getKey().state)
                     newNode.addFather(node)
                     successors.append(newNode)
                 }

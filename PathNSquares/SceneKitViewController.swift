@@ -13,7 +13,7 @@ class SceneKitViewController: UIViewController {
 
     @IBOutlet weak var scnView: SCNView!
     
-    let ambient = Ambient(ambientSize: 30, squaresQtd: 40, squareSize: 6)
+    let ambient = Ambient(ambientSize: 30, squaresQtd: 40, squareSize: 3)
     var linePath = [[Int]]()
     var scene : SceneSquares!
     
@@ -34,11 +34,21 @@ class SceneKitViewController: UIViewController {
     }
     
     func createPath() -> [[Int]]{
-        var states = [Vertex: [Vertex]]()
+        var states = [State]()
         
         for vertex in self.ambient.getVertex() {
-            states[vertex] = vertex.sucessors
+            var successors: [Successor] = []
+            for successor in vertex.sucessors {
+                let newSuccessor = Successor(key: successor, cost: successor.getCost())
+                successors.append(newSuccessor)
+            }
+            let state = State(key: vertex, successors: successors)
+            states.append(state)
         }
+        
+//        for vertex in self.ambient.getVertex() {
+//            states[vertex] = vertex.sucessors
+//        }
         
         let initialState = self.ambient.initialVertex
         let finalState = self.ambient.finalVertex
@@ -50,7 +60,7 @@ class SceneKitViewController: UIViewController {
         
         let agent = Agent(initialState: initialState!.state, finalState: finalState!.state, states: states)
         
-        print("\nTESTE DE BUSCA DE LARGURA\n")
+        print("\nTESTE DE BUSCA UNIFORME\n")
         let path = agent.problemSolvingWithUniformedSearch()
         print(path)
         return path

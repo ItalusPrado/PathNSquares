@@ -23,13 +23,13 @@ class BidirectionalSearch {
     var currentState2: Vertex!
     var visited1: [[Int]] = []
     var visited2: [[Int]] = []
-    var states: [Vertex: [Vertex]] = [:]
+    var states: [State] = []
     var finalState: [Int]!
     var initialState: [Int]!
     var bidirectionalType: BidirectionalType
     var isStateFound: Int = 0
     
-    init(states: [Vertex: [Vertex]], initialState: [Int], finalState: [Int], bidirectionalType: BidirectionalType) {
+    init(states: [State], initialState: [Int], finalState: [Int], bidirectionalType: BidirectionalType) {
         self.states = states
         self.initialState = initialState
         self.finalState = finalState
@@ -84,9 +84,9 @@ class BidirectionalSearch {
         var successors: [Vertex] = []
         
         for state in states {
-            if state.key.state == node.state {
-                for key in state.value {
-                    let newNode = Vertex(state: key.state)
+            if state.getKey().state == node.state {
+                for successor in state.getSuccessors() {
+                    let newNode = Vertex(state: successor.getKey().state)
                     newNode.addFather(node)
                     successors.append(newNode)
                 }
