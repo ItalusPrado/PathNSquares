@@ -36,6 +36,10 @@ class Vertex: NSObject {
         return self.cost
     }
     
+    func getGreedyCost() -> Float{
+        return self.costToObjective
+    }
+    
     func setNodeCost(_ cost: Float) {
         self.cost = cost
     }
