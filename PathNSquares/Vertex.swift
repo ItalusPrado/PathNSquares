@@ -13,7 +13,8 @@ class Vertex: NSObject {
     var state = [Int]() // Posição da aresta
     var sucessors = [Vertex]() // Array com sucessores
     var father : Vertex? // Nó pai para gerar o caminho
-    var cost: Int = 0
+    var cost: Float = 0
+    var costToObjective : Float = 0
     
     init(state: [Int]) {
         self.state = state
@@ -31,11 +32,15 @@ class Vertex: NSObject {
         self.sucessors = sucessors
     }
     
-    func getCost() -> Int {
+    func getCost() -> Float {
         return self.cost
     }
     
-    func setNodeCost(_ cost: Int) {
+    func setNodeCost(_ cost: Float) {
         self.cost = cost
+    }
+    
+    func setGreedyCost(_ cost: Float){
+        self.costToObjective = cost
     }
 }

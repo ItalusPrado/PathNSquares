@@ -46,7 +46,12 @@ class Ambient: NSObject {
             for j in i..<matrixVertex.count{
                 if i != j{
                     if createSucessors(firstVertex: matrixVertex[i].state, secondVertex: matrixVertex[j].state){
-                        let uniformeCost = Int(Swift.abs(Int32(matrixVertex[i].state[0]-matrixVertex[j].state[0]))+Swift.abs(Int32(matrixVertex[i].state[1]-matrixVertex[j].state[1])))
+                        
+                        
+                        let uniformeCost = sqrt(powf(Float(matrixVertex[j].state[0]-matrixVertex[i].state[0]),2.0)+powf(Float(matrixVertex[j].state[1]-matrixVertex[i].state[1]),2.0))
+                        let greedyCost = sqrt(powf(Float(finalVertex.state[0]-matrixVertex[i].state[0]),2.0)+powf(Float(finalVertex.state[1]-matrixVertex[i].state[1]),2.0))
+                        
+                        matrixVertex[i].setGreedyCost(greedyCost)
                         matrixVertex[i].setNodeCost(uniformeCost)
                         matrixVertex[j].setNodeCost(uniformeCost)
                         matrixVertex[i].addToSucessor(vertex: matrixVertex[j])
