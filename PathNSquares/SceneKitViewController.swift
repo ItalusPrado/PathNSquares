@@ -56,9 +56,7 @@ class SceneKitViewController: UIViewController {
         
         let agent = Agent(initialState: initialState!.state, finalState: finalState!.state, states: states)
         
-        print("\nTESTE DE BUSCA GULOSA\n")
-        let path = agent.problemSolvingWithGreedySearch()
-        print(path)
+        let path = agent.problemSolvingWithAStarSearch()
         return path
     }
     
