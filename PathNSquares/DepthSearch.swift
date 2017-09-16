@@ -8,25 +8,18 @@
 
 import UIKit
 
-class DepthSearch {
+class DepthSearch: SearchProtocol {
     
     var border: [Vertex] = []
     var currentState: Vertex!
     var finalState: [Int]!
     var states: [State]
     private var visited: [[Int]] = []
+    private let manager = SearchManager()
     
     init(states: [State], finalState: [Int]) {
         self.states = states
         self.finalState = finalState
-    }
-    
-    func isGoalState(_ node: Vertex) -> Bool {
-        if node.state == finalState {
-            return true
-        } else {
-            return false
-        }
     }
     
     func search(from initialState: [Int]) -> [[Int]] {
@@ -38,14 +31,14 @@ class DepthSearch {
             currentState = Vertex(state: initialState)
         }
         
-        while !isGoalState(currentState) {
+        while !manager.isGoalState(currentState, finalState) {
             self.addToBorder(getSucessors(from: currentState))
             self.visited.append(currentState.state)
             self.currentState = border.first
             self.border.removeFirst()
         }
         
-        return getPath()
+        return manager.getPath(currentState, finalState)
     }
     
     func getSucessors(from node: Vertex) -> [Vertex] {
@@ -73,28 +66,5 @@ class DepthSearch {
         
 //        print(currentState.state)
 //        printBorder()
-    }
-    
-    func getPath() -> [[Int]] {
-        var path: [[Int]] = []
-        path.append(finalState)
-        var node = currentState
-        repeat {
-            if node!.father != nil {
-                path.append(node!.father!.state)
-                node = node!.father
-            }
-        } while(node!.father != nil)
-        
-        print("\nPath:")
-        return path
-    }
-    
-    func printBorder() {
-        var statesBorder:[[Int]] = []
-        for node in border {
-            statesBorder.append(node.state)
-        }
-        print(statesBorder)
     }
 }

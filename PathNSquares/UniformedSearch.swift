@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UniformedSearch {
+class UniformedSearch: SearchProtocol {
     
     var border: [Vertex] = []
     var currentState: Vertex!
@@ -16,18 +16,11 @@ class UniformedSearch {
     var states: [State]
     private var visited: [[Int]] = []
     var cost:Int = 0
+    private let manager = SearchManager()
     
     init(states: [State], finalState: [Int]) {
         self.states = states
         self.finalState = finalState
-    }
-    
-    func isGoalState(_ node: Vertex) -> Bool {
-        if node.state == finalState {
-            return true
-        } else {
-            return false
-        }
     }
     
     func search(from initialState: [Int]) -> [[Int]] {
@@ -39,14 +32,14 @@ class UniformedSearch {
             currentState = Vertex(state: initialState)
         }
         
-        while !isGoalState(currentState) {
+        while !manager.isGoalState(currentState, finalState) {
             self.addToBorder(getSucessors(from: currentState))
             self.visited.append(currentState.state)
             self.currentState = border.last
             self.border.removeLast()
         }
         
-        return getPath()
+        return manager.getPath(currentState, finalState)
     }
     
     func getSucessors(from node: Vertex) -> [Vertex] {
@@ -82,28 +75,5 @@ class UniformedSearch {
 //        print(currentState.state)
 //        print(currentState.cost)
 //        printBorder()
-    }
-    
-    func getPath() -> [[Int]] {
-        var path: [[Int]] = []
-        path.append(finalState)
-        var node = currentState
-        repeat {
-            if node!.father != nil {
-                path.append(node!.father!.state)
-                node = node!.father
-            }
-        } while(node!.father != nil)
-        
-        print("\nPath:")
-        return path
-    }
-    
-    func printBorder() {
-        var statesBorder:[[Int]] = []
-        for node in border {
-            statesBorder.append(node.state)
-        }
-        print(statesBorder)
     }
 }

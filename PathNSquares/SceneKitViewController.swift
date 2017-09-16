@@ -46,10 +46,6 @@ class SceneKitViewController: UIViewController {
             states.append(state)
         }
         
-//        for vertex in self.ambient.getVertex() {
-//            states[vertex] = vertex.sucessors
-//        }
-        
         let initialState = self.ambient.initialVertex
         let finalState = self.ambient.finalVertex
         

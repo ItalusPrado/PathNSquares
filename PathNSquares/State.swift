@@ -11,6 +11,7 @@ import UIKit
 struct Successor {
     private var key: Vertex!
     private var cost: Float!
+    private var heuristicCost: Float!
     
     init(key: Vertex, cost: Float) {
         self.key = key
@@ -23,6 +24,10 @@ struct Successor {
     
     func getCost() -> Float {
         return self.cost
+    }
+    
+    func getHeuristicCost() -> Float {
+        return self.heuristicCost
     }
 }
 
