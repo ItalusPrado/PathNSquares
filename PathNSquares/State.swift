@@ -10,9 +10,9 @@ import UIKit
 
 struct Successor {
     private var key: Vertex!
-    private var cost: Int!
+    private var cost: Float!
     
-    init(key: Vertex, cost: Int) {
+    init(key: Vertex, cost: Float) {
         self.key = key
         self.cost = cost
     }
@@ -21,7 +21,7 @@ struct Successor {
         return self.key
     }
     
-    func getCost() -> Int {
+    func getCost() -> Float {
         return self.cost
     }
 }
