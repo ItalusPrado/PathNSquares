@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="EqU-RN-eZr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="qtb-gN-Tbs">
     <device id="retina4_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
@@ -74,6 +74,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eT2-B0-nQr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1027.736131934033" y="144.80000000000001"/>
+        </scene>
+        <!--Main View Controller-->
+        <scene sceneID="iIE-Xl-4xF">
+            <objects>
+                <viewController id="qtb-gN-Tbs" customClass="MainViewController" customModule="PathNSquares" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xlW-Xv-vIs"/>
+                        <viewControllerLayoutGuide type="bottom" id="qnJ-Ib-tBB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XfZ-hX-Xwc">
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VNf-oi-VYs">
+                                <rect key="frame" x="-0.5" y="-0.5" width="667" height="375"/>
+                            </sceneKitView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="VNf-oi-VYs" firstAttribute="width" secondItem="XfZ-hX-Xwc" secondAttribute="width" id="6gs-hc-O8R"/>
+                            <constraint firstItem="VNf-oi-VYs" firstAttribute="centerY" secondItem="XfZ-hX-Xwc" secondAttribute="centerY" id="DUj-LH-NWY"/>
+                            <constraint firstItem="VNf-oi-VYs" firstAttribute="centerX" secondItem="XfZ-hX-Xwc" secondAttribute="centerX" id="Pxm-YC-d7r"/>
+                            <constraint firstItem="VNf-oi-VYs" firstAttribute="height" secondItem="XfZ-hX-Xwc" secondAttribute="height" id="vfV-Xx-ZXr"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="scnView" destination="VNf-oi-VYs" id="jyY-S1-HqP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9is-B9-mnI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1721" y="145"/>
         </scene>
     </scenes>
 </document>

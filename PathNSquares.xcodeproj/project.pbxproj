@@ -15,6 +15,7 @@
 		087CC8701F5F87BC0043EAC9 /* BreadthSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087CC86F1F5F87BC0043EAC9 /* BreadthSearch.swift */; };
 		087CC8721F5F87C30043EAC9 /* Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087CC8711F5F87C30043EAC9 /* Agent.swift */; };
 		088C2B291F647F8500940296 /* SNNode+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088C2B281F647F8500940296 /* SNNode+Extension.swift */; };
+		B90672F31F6ABDA900EECA1D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90672F21F6ABDA900EECA1D /* MainViewController.swift */; };
 		B9AFB3B51F63B7F200610A0D /* SceneKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AFB3B41F63B7F200610A0D /* SceneKitViewController.swift */; };
 		B9AFB3B71F63B84900610A0D /* SceneSquares.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AFB3B61F63B84900610A0D /* SceneSquares.swift */; };
 		B9AFB3B91F63BD1B00610A0D /* BoxNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AFB3B81F63BD1B00610A0D /* BoxNode.swift */; };
@@ -55,6 +56,7 @@
 		087CC86F1F5F87BC0043EAC9 /* BreadthSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreadthSearch.swift; sourceTree = "<group>"; };
 		087CC8711F5F87C30043EAC9 /* Agent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Agent.swift; sourceTree = "<group>"; };
 		088C2B281F647F8500940296 /* SNNode+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SNNode+Extension.swift"; sourceTree = "<group>"; };
+		B90672F21F6ABDA900EECA1D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		B9AFB3B41F63B7F200610A0D /* SceneKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneKitViewController.swift; sourceTree = "<group>"; };
 		B9AFB3B61F63B84900610A0D /* SceneSquares.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneSquares.swift; sourceTree = "<group>"; };
 		B9AFB3B81F63BD1B00610A0D /* BoxNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxNode.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				B9AFB3B41F63B7F200610A0D /* SceneKitViewController.swift */,
 				B9AFB3B61F63B84900610A0D /* SceneSquares.swift */,
 				B9AFB3B81F63BD1B00610A0D /* BoxNode.swift */,
+				B90672F21F6ABDA900EECA1D /* MainViewController.swift */,
 			);
 			name = SceneKit;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				087CC86E1F5F87AA0043EAC9 /* Array+Extension.swift in Sources */,
 				087CC8701F5F87BC0043EAC9 /* BreadthSearch.swift in Sources */,
 				B9EE07E11F5E106C0024E2E2 /* Vertex.swift in Sources */,
+				B90672F31F6ABDA900EECA1D /* MainViewController.swift in Sources */,
 				B9AFB3B91F63BD1B00610A0D /* BoxNode.swift in Sources */,
 				0871E8051F68D4F100A15B35 /* State.swift in Sources */,
 				B9EE07B21F5859810024E2E2 /* ViewController.swift in Sources */,
