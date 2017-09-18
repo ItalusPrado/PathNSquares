@@ -15,6 +15,10 @@ class MainViewController: UIViewController {
     @IBOutlet weak var randomBtn: UIButton!
     @IBOutlet weak var chooseBtn: UIButton!
     
+    var squaresQtd : Int!
+    var squareSize: Int!
+    var ambientSize: Int!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,6 +38,30 @@ class MainViewController: UIViewController {
         self.randomBtn.clipsToBounds = true
         self.chooseBtn.clipsToBounds = true
     }
+    
+    // View
+    
+    @IBAction func pressBtn(_ sender: UIButton) {
+        if sender == self.randomBtn {
+            ambientSize = Int(10+arc4random()%50)
+            squaresQtd = Int(2+arc4random()%50)
+            squareSize = Int(2+arc4random()%4)
+            self.performSegue(withIdentifier: "mainToProblem", sender: self)
+        }
+        
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "mainToProblem"{
+            let nextScene = segue.destination as! SceneKitViewController
+            nextScene.squaresQtd = self.squaresQtd
+            nextScene.ambientSize = self.ambientSize
+            nextScene.squareSize = self.squareSize
+            
+        }
+    }
+    // Scene
     
     func createScene(){
         let scene = SCNScene()
@@ -74,7 +102,6 @@ class MainViewController: UIViewController {
     }
     
     func squares(){
-        
         for i in -4...4{
             for j in -4 ... 4{
                 let position = SCNVector3(i*2,j*2,5-Int(arc4random()%10))
@@ -94,6 +121,5 @@ class MainViewController: UIViewController {
             }
             
         }
-        
     }
 }

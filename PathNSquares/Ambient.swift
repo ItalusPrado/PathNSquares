@@ -49,9 +49,7 @@ class Ambient: NSObject {
                         
                         
                         let uniformeCost = sqrt(powf(Float(matrixVertex[j].state[0]-matrixVertex[i].state[0]),2.0)+powf(Float(matrixVertex[j].state[1]-matrixVertex[i].state[1]),2.0))
-                        let greedyCost = sqrt(powf(Float(finalVertex.state[0]-matrixVertex[i].state[0]),2.0)+powf(Float(finalVertex.state[1]-matrixVertex[i].state[1]),2.0))
                         
-                        matrixVertex[i].setGreedyCost(greedyCost)
                         matrixVertex[i].setNodeCost(uniformeCost)
                         matrixVertex[j].setNodeCost(uniformeCost)
                         matrixVertex[i].addToSucessor(vertex: matrixVertex[j])
@@ -59,6 +57,12 @@ class Ambient: NSObject {
                     }
                 }
             }
+            let greedyCost = sqrt(powf(Float(finalVertex.state[0]-matrixVertex[i].state[0]),2.0)+powf(Float(finalVertex.state[1]-matrixVertex[i].state[1]),2.0))
+            if i == 0 {
+                print(matrixVertex[i].state)
+                print(greedyCost)
+            }
+            matrixVertex[i].setGreedyCost(greedyCost)
         }
     }
     
@@ -159,7 +163,7 @@ class Ambient: NSObject {
             self.positions.append([x,y])
             for point in 0..<self.squareSize{
                 for point2 in 0..<self.squareSize{
-                    print("\(y+point)-\(x+point2)")
+                    //print("\(y+point)-\(x+point2)")
                     self.matrix[y+point][x+point2] = 1
                 }
             }

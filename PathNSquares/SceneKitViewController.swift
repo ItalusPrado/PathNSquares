@@ -13,14 +13,17 @@ class SceneKitViewController: UIViewController {
 
     @IBOutlet weak var scnView: SCNView!
     
-    let ambient = Ambient(ambientSize: 30, squaresQtd: 40, squareSize: 3)
+    var ambientSize : Int!
+    var squaresQtd : Int!
+    var squareSize: Int!
+    var ambient : Ambient!
     var linePath = [[Int]]()
     var scene : SceneSquares!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        self.ambient = Ambient(ambientSize: ambientSize, squaresQtd: squaresQtd, squareSize: squareSize)
         // Visual do problema
         ambient.prepareSucessors()
         
@@ -56,7 +59,7 @@ class SceneKitViewController: UIViewController {
         
         let agent = Agent(initialState: initialState!.state, finalState: finalState!.state, states: states)
         
-        let path = agent.problemSolvingWithAStarSearch()
+        let path = agent.problemSolvingWithUniformedSearch()
         return path
     }
     

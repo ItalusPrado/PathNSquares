@@ -74,6 +74,6 @@ class UniformedSearch: SearchProtocol {
         
 //        print(currentState.state)
 //        print(currentState.cost)
-//        printBorder()
+        //print(self.border.count)
     }
 }

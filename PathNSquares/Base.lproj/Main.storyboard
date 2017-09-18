@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="EqU-RN-eZr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="qtb-gN-Tbs">
     <device id="retina4_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13156.2"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -74,7 +74,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eT2-B0-nQr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1027.736131934033" y="144.80000000000001"/>
+            <point key="canvasLocation" x="1729" y="825"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="iIE-Xl-4xF">
@@ -101,6 +101,9 @@
                                         <state key="normal" title=" Random Ambient ">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="pressBtn:" destination="qtb-gN-Tbs" eventType="touchUpInside" id="lse-5H-jGs"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gE7-ik-4N2">
                                         <rect key="frame" x="226" y="0.0" width="122" height="56"/>
@@ -108,6 +111,9 @@
                                         <state key="normal" title=" Choose Ambient ">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="pressBtn:" destination="qtb-gN-Tbs" eventType="touchUpInside" id="aFd-u6-QKm"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -123,11 +129,12 @@
                         <outlet property="chooseBtn" destination="gE7-ik-4N2" id="XiE-QF-syq"/>
                         <outlet property="randomBtn" destination="epC-pJ-kDJ" id="A88-je-6HD"/>
                         <outlet property="scnView" destination="VNf-oi-VYs" id="jyY-S1-HqP"/>
+                        <segue destination="EqU-RN-eZr" kind="presentation" identifier="mainToProblem" id="atd-31-SM9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9is-B9-mnI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1720.3898050974515" y="144.80000000000001"/>
+            <point key="canvasLocation" x="1028" y="825"/>
         </scene>
     </scenes>
 </document>
