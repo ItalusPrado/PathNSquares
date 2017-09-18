@@ -39,16 +39,12 @@ class SceneKitViewController: UIViewController {
         for vertex in self.ambient.getVertex() {
             var successors: [Successor] = []
             for successor in vertex.sucessors {
-                let newSuccessor = Successor(key: successor, cost: successor.getCost())
+                let newSuccessor = Successor(key: successor, cost: successor.getCost(), heuristicCost: successor.getGreedyCost())
                 successors.append(newSuccessor)
             }
             let state = State(key: vertex, successors: successors)
             states.append(state)
         }
-        
-//        for vertex in self.ambient.getVertex() {
-//            states[vertex] = vertex.sucessors
-//        }
         
         let initialState = self.ambient.initialVertex
         let finalState = self.ambient.finalVertex
@@ -60,9 +56,7 @@ class SceneKitViewController: UIViewController {
         
         let agent = Agent(initialState: initialState!.state, finalState: finalState!.state, states: states)
         
-        print("\nTESTE DE BUSCA UNIFORME\n")
-        let path = agent.problemSolvingWithUniformedSearch()
-        print(path)
+        let path = agent.problemSolvingWithAStarSearch()
         return path
     }
     

@@ -8,15 +8,15 @@
 
 import UIKit
 
-class UniformedSearch: SearchProtocol {
+class GreedySearch: SearchProtocol {
     
     var border: [Vertex] = []
     var currentState: Vertex!
     var finalState: [Int]!
     var states: [State]
-    private var visited: [[Int]] = []
-    var cost:Int = 0
-    private let manager = SearchManager()
+    var visited: [[Int]] = []
+    var cost: Int = 0
+    let searchManager = SearchManager()
     
     init(states: [State], finalState: [Int]) {
         self.states = states
@@ -25,21 +25,21 @@ class UniformedSearch: SearchProtocol {
     
     func search(from initialState: [Int]) -> [[Int]] {
         
-        print("\n\nUNIFORMED SEARCH")
+        print("\n\nGREEDY SEARCH")
         print("\nBorders:")
         
         if currentState == nil {
             currentState = Vertex(state: initialState)
         }
         
-        while !manager.isGoalState(currentState, finalState) {
+        while !searchManager.isGoalState(currentState, finalState) {
             self.addToBorder(getSucessors(from: currentState))
             self.visited.append(currentState.state)
-            self.currentState = border.last
-            self.border.removeLast()
+            self.currentState = border.first
+            self.border.removeFirst()
         }
         
-        return manager.getPath(currentState, finalState)
+        return searchManager.getPath(currentState, finalState)
     }
     
     func getSucessors(from node: Vertex) -> [Vertex] {
@@ -51,9 +51,9 @@ class UniformedSearch: SearchProtocol {
                     
                     let newNode = Vertex(state: successor.getKey().state)
                     newNode.addFather(node)
-                    
-                    let newCost = node.cost+successor.getCost()
-                    newNode.setNodeCost(newCost)
+                    newNode.setGreedyCost(successor.getHeuristicCost())
+                    print(newNode.state)
+                    print(newNode.costToObjective)
                     
                     successors.append(newNode)
                 }
@@ -65,15 +65,15 @@ class UniformedSearch: SearchProtocol {
     
     func addToBorder(_ successors: [Vertex]) {
         if !visited.contains(where: { $0 == currentState.state }) {
-            for successor in successors {
+            let sortedSuccessors = successors.sorted(by: {$0.0.costToObjective > $0.1.costToObjective})
+            for successor in sortedSuccessors {
+                print(successor.costToObjective)
                 self.border.appendAtBeginning(newItem:successor)
             }
         }
         
-        self.border.sort(by: {$0.0.cost > $0.1.cost})
-        
 //        print(currentState.state)
-//        print(currentState.cost)
-//        printBorder()
+//        print(currentState.heuristicCost)
+        searchManager.printBorder(border)
     }
 }

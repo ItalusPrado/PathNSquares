@@ -15,6 +15,7 @@ class Vertex: NSObject {
     var father : Vertex? // Nó pai para gerar o caminho
     var cost: Float = 0
     var costToObjective : Float = 0
+    var totalCost: Float = 0
     
     init(state: [Int]) {
         self.state = state
@@ -46,5 +47,9 @@ class Vertex: NSObject {
     
     func setGreedyCost(_ cost: Float){
         self.costToObjective = cost
+    }
+    
+    func setTotalNodeCost(_ totalCost: Float){
+        self.totalCost = totalCost
     }
 }

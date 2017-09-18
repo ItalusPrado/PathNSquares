@@ -1,22 +1,21 @@
 //
-//  BreadthSearch.swift
+//  A*Search.swift
 //  ArtificialInteligence
 //
-//  Created by Gabriel Cavalcante on 18/07/17.
+//  Created by Gabriel Cavalcante on 14/09/17.
 //  Copyright © 2017 Gabriel Cavalcante. All rights reserved.
 //
 
 import UIKit
 
-class UniformedSearch: SearchProtocol {
+class AStarSearch: SearchProtocol {
     
     var border: [Vertex] = []
     var currentState: Vertex!
     var finalState: [Int]!
     var states: [State]
-    private var visited: [[Int]] = []
-    var cost:Int = 0
-    private let manager = SearchManager()
+    var visited: [[Int]] = []
+    let searchManager = SearchManager()
     
     init(states: [State], finalState: [Int]) {
         self.states = states
@@ -25,21 +24,21 @@ class UniformedSearch: SearchProtocol {
     
     func search(from initialState: [Int]) -> [[Int]] {
         
-        print("\n\nUNIFORMED SEARCH")
+        print("\n\nA* SEARCH")
         print("\nBorders:")
         
         if currentState == nil {
             currentState = Vertex(state: initialState)
         }
         
-        while !manager.isGoalState(currentState, finalState) {
+        while !searchManager.isGoalState(currentState, finalState) {
             self.addToBorder(getSucessors(from: currentState))
             self.visited.append(currentState.state)
-            self.currentState = border.last
-            self.border.removeLast()
+            self.currentState = border.first
+            self.border.removeFirst()
         }
         
-        return manager.getPath(currentState, finalState)
+        return searchManager.getPath(currentState, finalState)
     }
     
     func getSucessors(from node: Vertex) -> [Vertex] {
@@ -55,6 +54,12 @@ class UniformedSearch: SearchProtocol {
                     let newCost = node.cost+successor.getCost()
                     newNode.setNodeCost(newCost)
                     
+                    let heuristicCost = successor.getHeuristicCost()
+                    newNode.setGreedyCost(heuristicCost)
+                    
+                    let totalCost = newCost + heuristicCost
+                    newNode.setTotalNodeCost(totalCost)
+                    
                     successors.append(newNode)
                 }
             }
@@ -65,15 +70,15 @@ class UniformedSearch: SearchProtocol {
     
     func addToBorder(_ successors: [Vertex]) {
         if !visited.contains(where: { $0 == currentState.state }) {
-            for successor in successors {
+            let sortedSuccessors = successors.sorted(by: {$0.0.totalCost > $0.1.totalCost})
+            for successor in sortedSuccessors {
                 self.border.appendAtBeginning(newItem:successor)
             }
         }
         
-        self.border.sort(by: {$0.0.cost > $0.1.cost})
-        
-//        print(currentState.state)
-//        print(currentState.cost)
-//        printBorder()
+        print(currentState.state)
+        print(currentState.totalCost)
+//        searchManager.printBorder(border)
     }
 }
+
