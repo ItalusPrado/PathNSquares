@@ -8,6 +8,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13156.2"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -87,25 +88,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VNf-oi-VYs">
+                            <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VNf-oi-VYs">
                                 <rect key="frame" x="-0.5" y="-0.5" width="667" height="375"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </sceneKitView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="ivg-ug-fDO">
+                                <rect key="frame" x="159.5" y="159" width="348" height="56"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="epC-pJ-kDJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="126" height="56"/>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title=" Random Ambient ">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gE7-ik-4N2">
+                                        <rect key="frame" x="226" y="0.0" width="122" height="56"/>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title=" Choose Ambient ">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
-                            <constraint firstItem="VNf-oi-VYs" firstAttribute="width" secondItem="XfZ-hX-Xwc" secondAttribute="width" id="6gs-hc-O8R"/>
-                            <constraint firstItem="VNf-oi-VYs" firstAttribute="centerY" secondItem="XfZ-hX-Xwc" secondAttribute="centerY" id="DUj-LH-NWY"/>
-                            <constraint firstItem="VNf-oi-VYs" firstAttribute="centerX" secondItem="XfZ-hX-Xwc" secondAttribute="centerX" id="Pxm-YC-d7r"/>
-                            <constraint firstItem="VNf-oi-VYs" firstAttribute="height" secondItem="XfZ-hX-Xwc" secondAttribute="height" id="vfV-Xx-ZXr"/>
+                            <constraint firstItem="ivg-ug-fDO" firstAttribute="centerY" secondItem="XfZ-hX-Xwc" secondAttribute="centerY" id="o4M-di-qI1"/>
+                            <constraint firstItem="ivg-ug-fDO" firstAttribute="centerX" secondItem="XfZ-hX-Xwc" secondAttribute="centerX" id="u8i-Xv-JdI"/>
+                            <constraint firstItem="ivg-ug-fDO" firstAttribute="height" secondItem="XfZ-hX-Xwc" secondAttribute="height" multiplier="0.15" id="zMk-Zv-A9f"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="chooseBtn" destination="gE7-ik-4N2" id="XiE-QF-syq"/>
+                        <outlet property="randomBtn" destination="epC-pJ-kDJ" id="A88-je-6HD"/>
                         <outlet property="scnView" destination="VNf-oi-VYs" id="jyY-S1-HqP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9is-B9-mnI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1721" y="145"/>
+            <point key="canvasLocation" x="1720.3898050974515" y="144.80000000000001"/>
         </scene>
     </scenes>
 </document>
