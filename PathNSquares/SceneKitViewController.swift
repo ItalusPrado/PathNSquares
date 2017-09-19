@@ -23,7 +23,7 @@ class SceneKitViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.ambient = Ambient(ambientSize: ambientSize, squaresQtd: squaresQtd, squareSize: squareSize)
+        self.ambient = Ambient(ambientSize: 10, squaresQtd: 5, squareSize: 4)
         // Visual do problema
         ambient.prepareSucessors()
         
@@ -32,7 +32,6 @@ class SceneKitViewController: UIViewController {
         // add a tap gesture recognizer
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         scnView.addGestureRecognizer(tapGesture)
-        
         
     }
     
@@ -91,7 +90,7 @@ class SceneKitViewController: UIViewController {
             // retrieved the first clicked object
             let result = hitResults[0]
             if let node = result.node as? BoxNode{
-                
+                print(node.positionBox)
                 for nodeInfo in node.successorsBox{
                     let material = nodeInfo.geometry!.firstMaterial!
                     // highlight it

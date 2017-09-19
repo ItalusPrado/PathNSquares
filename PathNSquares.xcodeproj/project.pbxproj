@@ -23,6 +23,7 @@
 		B9AFB3B51F63B7F200610A0D /* SceneKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AFB3B41F63B7F200610A0D /* SceneKitViewController.swift */; };
 		B9AFB3B71F63B84900610A0D /* SceneSquares.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AFB3B61F63B84900610A0D /* SceneSquares.swift */; };
 		B9AFB3B91F63BD1B00610A0D /* BoxNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AFB3B81F63BD1B00610A0D /* BoxNode.swift */; };
+		B9D03E341F7158D000526BF6 /* UniformCost.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D03E331F7158D000526BF6 /* UniformCost.swift */; };
 		B9EE07B01F5859810024E2E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EE07AF1F5859810024E2E2 /* AppDelegate.swift */; };
 		B9EE07B21F5859810024E2E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EE07B11F5859810024E2E2 /* ViewController.swift */; };
 		B9EE07B51F5859810024E2E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9EE07B31F5859810024E2E2 /* Main.storyboard */; };
@@ -68,6 +69,7 @@
 		B9AFB3B41F63B7F200610A0D /* SceneKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneKitViewController.swift; sourceTree = "<group>"; };
 		B9AFB3B61F63B84900610A0D /* SceneSquares.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneSquares.swift; sourceTree = "<group>"; };
 		B9AFB3B81F63BD1B00610A0D /* BoxNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxNode.swift; sourceTree = "<group>"; };
+		B9D03E331F7158D000526BF6 /* UniformCost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniformCost.swift; sourceTree = "<group>"; };
 		B9EE07AC1F5859810024E2E2 /* PathNSquares.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PathNSquares.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9EE07AF1F5859810024E2E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9EE07B11F5859810024E2E2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -154,6 +156,14 @@
 			name = SceneKit;
 			sourceTree = "<group>";
 		};
+		B9D03E321F7158BF00526BF6 /* SearchTests */ = {
+			isa = PBXGroup;
+			children = (
+				B9D03E331F7158D000526BF6 /* UniformCost.swift */,
+			);
+			name = SearchTests;
+			sourceTree = "<group>";
+		};
 		B9EE07A31F5859800024E2E2 = {
 			isa = PBXGroup;
 			children = (
@@ -177,6 +187,7 @@
 		B9EE07AE1F5859810024E2E2 /* PathNSquares */ = {
 			isa = PBXGroup;
 			children = (
+				B9D03E321F7158BF00526BF6 /* SearchTests */,
 				B9AFB3B31F63B79700610A0D /* SceneKit */,
 				B9EE07DF1F5E0CA70024E2E2 /* Objects */,
 				087CC86A1F5F87760043EAC9 /* Agent */,
@@ -362,6 +373,7 @@
 				B9EE07DE1F5E0C880024E2E2 /* Ambient.swift in Sources */,
 				087CC86E1F5F87AA0043EAC9 /* Array+Extension.swift in Sources */,
 				08BED1041F6D84A900D23182 /* AStarSearch.swift in Sources */,
+				B9D03E341F7158D000526BF6 /* UniformCost.swift in Sources */,
 				08BED0FE1F6D7EDE00D23182 /* GreedySearch.swift in Sources */,
 				087CC8701F5F87BC0043EAC9 /* BreadthSearch.swift in Sources */,
 				08BED1011F6D7EF500D23182 /* SearchProtocol.swift in Sources */,

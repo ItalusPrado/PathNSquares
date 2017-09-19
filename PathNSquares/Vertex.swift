@@ -1,18 +1,17 @@
-//
-//  Vertex.swift
-//  PathNSquares
-//
-//  Created by Italus Rodrigues do Prado on 04/09/17.
-//  Copyright © 2017 Italus Rodrigues do Prado. All rights reserved.
-//
-
 import UIKit
+
+struct Tuple {
+    let successor: Vertex
+    let cost: Float
+}
 
 class Vertex: NSObject {
     
     var state = [Int]() // Posição da aresta
     var sucessors = [Vertex]() // Array com sucessores
     var father : Vertex? // Nó pai para gerar o caminho
+    var information = [Tuple]()
+    var someTuple: (successor: Vertex,cost: Float)? = nil
     var cost: Float = 0
     var costToObjective : Float = 0
     var totalCost: Float = 0
