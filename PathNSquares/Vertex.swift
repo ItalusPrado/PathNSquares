@@ -1,10 +1,5 @@
 import UIKit
 
-struct Tuple {
-    let successor: Vertex
-    let cost: Float
-}
-
 class Vertex: NSObject {
     
     var state = [Int]() // Posição da aresta

@@ -48,9 +48,6 @@ class Ambient: NSObject {
                     if createSucessors(firstVertex: matrixVertex[i].state, secondVertex: matrixVertex[j].state){
                         
                         let uniformeCost = sqrt(powf(Float(matrixVertex[j].state[0]-matrixVertex[i].state[0]),2.0)+powf(Float(matrixVertex[j].state[1]-matrixVertex[i].state[1]),2.0))
-                        // Testes Loucos
-                        matrixVertex[i].information.append(Tuple(successor: matrixVertex[j], cost: uniformeCost))
-                        matrixVertex[j].information.append(Tuple(successor: matrixVertex[i], cost: uniformeCost))
                         
                         // Fim dos testes loucos
                         matrixVertex[i].setNodeCost(uniformeCost)
