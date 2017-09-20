@@ -64,16 +64,16 @@ class UniformedSearch: SearchProtocol {
     }
     
     func addToBorder(_ successors: [Vertex]) {
-//        if !visited.contains(where: { $0 == currentState.state }) {
+        //if !visited.contains(where: { $0 == currentState.state }) {
             for successor in successors {
                 self.border.appendAtBeginning(newItem:successor)
             }
-//        }
+        //}
         
         self.border.sort(by: {$0.0.getUniformCost() > $0.1.getUniformCost()})
         
 //        print(currentState.state)
 //        print(currentState.cost)
-//        printBorder()
+        //print(self.border.count)
     }
 }

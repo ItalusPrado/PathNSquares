@@ -13,14 +13,17 @@ class SceneKitViewController: UIViewController {
 
     @IBOutlet weak var scnView: SCNView!
     
-    let ambient = Ambient(ambientSize: 30, squaresQtd: 40, squareSize: 3)
+    var ambientSize : Int!
+    var squaresQtd : Int!
+    var squareSize: Int!
+    var ambient : Ambient!
     var linePath = [[Int]]()
     var scene : SceneSquares!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        self.ambient = Ambient(ambientSize: 10, squaresQtd: 5, squareSize: 4)
         // Visual do problema
         ambient.prepareSucessors()
         
@@ -29,7 +32,6 @@ class SceneKitViewController: UIViewController {
         // add a tap gesture recognizer
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         scnView.addGestureRecognizer(tapGesture)
-        
         
     }
     
@@ -61,7 +63,7 @@ class SceneKitViewController: UIViewController {
         
         let agent = Agent(initialState: initialState!.state, finalState: finalState!.state, states: states)
         
-        let path = agent.problemSolvingWithAStarSearch()
+        let path = agent.problemSolvingWithUniformedSearch()
         return path
     }
     
@@ -93,7 +95,7 @@ class SceneKitViewController: UIViewController {
             // retrieved the first clicked object
             let result = hitResults[0]
             if let node = result.node as? BoxNode{
-                
+                print(node.positionBox)
                 for nodeInfo in node.successorsBox{
                     let material = nodeInfo.geometry!.firstMaterial!
                     // highlight it
