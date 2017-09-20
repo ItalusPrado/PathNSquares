@@ -47,7 +47,6 @@ class Ambient: NSObject {
                 if i != j{
                     if createSucessors(firstVertex: matrixVertex[i].state, secondVertex: matrixVertex[j].state){
                         
-                        
                         let uniformeCost = sqrt(powf(Float(matrixVertex[j].state[0]-matrixVertex[i].state[0]),2.0)+powf(Float(matrixVertex[j].state[1]-matrixVertex[i].state[1]),2.0))
                         let greedyCost = sqrt(powf(Float(finalVertex.state[0]-matrixVertex[i].state[0]),2.0)+powf(Float(finalVertex.state[1]-matrixVertex[i].state[1]),2.0))
                         

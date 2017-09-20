@@ -52,7 +52,7 @@ class UniformedSearch: SearchProtocol {
                     let newNode = Vertex(state: successor.getKey().state)
                     newNode.addFather(node)
                     
-                    let newCost = node.cost+successor.getCost()
+                    let newCost = node.getUniformCost()+successor.getCost()
                     newNode.setNodeCost(newCost)
                     
                     successors.append(newNode)
@@ -64,13 +64,13 @@ class UniformedSearch: SearchProtocol {
     }
     
     func addToBorder(_ successors: [Vertex]) {
-        if !visited.contains(where: { $0 == currentState.state }) {
+//        if !visited.contains(where: { $0 == currentState.state }) {
             for successor in successors {
                 self.border.appendAtBeginning(newItem:successor)
             }
-        }
+//        }
         
-        self.border.sort(by: {$0.0.cost > $0.1.cost})
+        self.border.sort(by: {$0.0.getUniformCost() > $0.1.getUniformCost()})
         
 //        print(currentState.state)
 //        print(currentState.cost)

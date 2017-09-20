@@ -13,7 +13,8 @@ class Vertex: NSObject {
     var state = [Int]() // Posição da aresta
     var sucessors = [Vertex]() // Array com sucessores
     var father : Vertex? // Nó pai para gerar o caminho
-    var cost: Float = 0
+    var cost: [Float] = []
+    var uniformedCost: Float = 0
     var costToObjective : Float = 0
     var totalCost: Float = 0
     
@@ -33,8 +34,16 @@ class Vertex: NSObject {
         self.sucessors = sucessors
     }
     
-    func getCost() -> Float {
-        return self.cost
+    func getCost(at index: Int) -> Float {
+        return self.cost[index]
+    }
+    
+    func getUniformCost() -> Float {
+        return self.uniformedCost
+    }
+    
+    func setUniformCost(_ uniformedCost: Float) {
+        self.uniformedCost = uniformedCost
     }
     
     func getGreedyCost() -> Float{
@@ -42,7 +51,7 @@ class Vertex: NSObject {
     }
     
     func setNodeCost(_ cost: Float) {
-        self.cost = cost
+        self.cost.append(cost)
     }
     
     func setGreedyCost(_ cost: Float){

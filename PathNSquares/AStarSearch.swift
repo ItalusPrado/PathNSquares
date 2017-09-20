@@ -51,7 +51,7 @@ class AStarSearch: SearchProtocol {
                     let newNode = Vertex(state: successor.getKey().state)
                     newNode.addFather(node)
                     
-                    let newCost = node.cost+successor.getCost()
+                    let newCost = node.getUniformCost()+successor.getCost()
                     newNode.setNodeCost(newCost)
                     
                     let heuristicCost = successor.getHeuristicCost()
@@ -76,8 +76,8 @@ class AStarSearch: SearchProtocol {
             }
         }
         
-        print(currentState.state)
-        print(currentState.totalCost)
+//        print(currentState.state)
+//        print(currentState.totalCost)
 //        searchManager.printBorder(border)
     }
 }
