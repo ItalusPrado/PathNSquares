@@ -132,6 +132,8 @@ class SceneKitViewController: UIViewController {
     func createLine(between point1: [Int], and point2: [Int]) {
         let vector1 = SCNVector3(CGFloat(point1[0]),1,CGFloat(point1[1]))
         let vector2 = SCNVector3(CGFloat(point2[0]), 1, CGFloat(point2[1]))
+        print(vector1)
+        print(vector2)
         let twoPointsNode1 = SCNNode()
         scene.rootNode.addChildNode(twoPointsNode1.buildLineInTwoPointsWithRotation(
             from: vector1, to: vector2, radius: 0.05, color: .gray))
