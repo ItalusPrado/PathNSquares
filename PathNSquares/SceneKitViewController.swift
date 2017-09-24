@@ -42,9 +42,6 @@ class SceneKitViewController: UIViewController {
             var successors: [Successor] = []
             
             for (index,successor) in vertex.sucessors.enumerated() {
-                print(index)
-                print(vertex.cost.count)
-                print(vertex.sucessors.count)
                 let newSuccessor = Successor(key: successor, cost: vertex.getCost(at: index), heuristicCost: successor.getGreedyCost())
                 successors.append(newSuccessor)
             }
