@@ -148,7 +148,7 @@ class Ambient: NSObject {
         var array = [Int]()
         
         // Adicionando zeros a matriz
-        for _ in 0..<(ambientSize*2)-2{
+        for _ in 0..<(ambientSize)-2{
             array.append(0)
         }
         for _ in 0..<ambientSize{

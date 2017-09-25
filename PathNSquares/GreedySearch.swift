@@ -64,13 +64,13 @@ class GreedySearch: SearchProtocol {
     }
     
     func addToBorder(_ successors: [Vertex]) {
-//        if !visited.contains(where: { $0 == currentState.state }) {
+        if !visited.contains(where: { $0 == currentState.state }) {
             let sortedSuccessors = successors.sorted(by: {$0.0.costToObjective > $0.1.costToObjective})
             for successor in sortedSuccessors {
                 print(successor.costToObjective)
                 self.border.appendAtBeginning(newItem:successor)
             }
-//        }
+        }
         
 //        print(currentState.state)
 //        print(currentState.heuristicCost)

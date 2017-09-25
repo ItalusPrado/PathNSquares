@@ -47,6 +47,8 @@ class MainViewController: UIViewController {
             squaresQtd = Int(2+arc4random()%50)
             squareSize = Int(2+arc4random()%4)
             self.performSegue(withIdentifier: "mainToProblem", sender: self)
+        } else {
+            self.createAlertView()
         }
         
         
@@ -121,5 +123,40 @@ class MainViewController: UIViewController {
             }
             
         }
+    }
+    
+    func createAlertView(){
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addTextField { (textField) in
+            textField.placeholder = "Ambient Size"
+            textField.keyboardType = .numberPad
+        }
+        alert.addTextField { (textField) in
+            textField.placeholder = "Size Squares"
+            textField.keyboardType = .numberPad
+        }
+        alert.addTextField { (textField) in
+            textField.placeholder = "Number Squares"
+            textField.keyboardType = .numberPad
+        }
+        let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil)
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.default, handler: {
+            UIAlertAction in
+            self.ambientSize = Int(alert.textFields![0].text!)
+            self.squareSize = Int(alert.textFields![1].text!)
+            self.squaresQtd = Int(alert.textFields![2].text!)
+            
+            if self.ambientSize <= self.squareSize{
+                let newAlert = UIAlertController(title: "Ambient size smaller than Square size", message: "Please choose a bigger ambient size", preferredStyle: UIAlertControllerStyle.alert)
+                newAlert.addAction(okAction)
+                self.present(newAlert, animated: true, completion: nil)
+            } else {
+                self.performSegue(withIdentifier: "mainToProblem", sender: self)
+            }
+            
+            
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
 }

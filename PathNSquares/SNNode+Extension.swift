@@ -90,6 +90,7 @@ extension SCNNode {
         self.transform.m42 = (startPoint.y + endPoint.y) / 2.0
         self.transform.m43 = (startPoint.z + endPoint.z) / 2.0
         self.transform.m44 = 1.0
+        
         return self
     }
 }
